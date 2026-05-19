@@ -122,7 +122,7 @@
             border-radius: 12px;
             letter-spacing: -0.015em;
             word-spacing: 0.05em;
-            font-size: 0.85em;
+            font-size: 0.65em;
         }
 
         .hero-subtitle {
@@ -515,6 +515,19 @@
         .link-card p {
             font-size: 13px;
             color: var(--color-text-light);
+        }
+
+        #infographic-card {
+            border: 1px solid var(--color-border) !important;
+            border-radius: 12px;
+            background: var(--color-dark-bg) !important;
+        }
+
+        #infographic-card:hover {
+            border-color: var(--color-primary) !important;
+            background: var(--color-hover-bg) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-4px) !important;
         }
 
         /* Footer */
@@ -1133,14 +1146,6 @@
         infographicCard.addEventListener('click', (e) => {
             e.preventDefault();
             modal.classList.add('active');
-        });
-
-        infographicCard.addEventListener('mouseenter', () => {
-            modal.classList.add('active');
-        });
-
-        modal.addEventListener('mouseleave', () => {
-            modal.classList.remove('active');
         });
 
         modalClose.addEventListener('click', (e) => {
