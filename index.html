@@ -627,6 +627,70 @@
             opacity: 0.7;
         }
 
+        /* Presentation Section */
+        .presentation {
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 2);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-white);
+        }
+
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 4);
+        }
+
+        .presentation-header {
+            text-align: center;
+        }
+
+        .presentation-header h2 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-text-dark);
+            font-family: var(--font-display);
+            letter-spacing: -0.01em;
+        }
+
+        .presentation-header p {
+            font-size: 16px;
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
+        .presentation-embed {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1.5px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: all 250ms ease;
+        }
+
+        .presentation-embed:hover {
+            border-color: var(--color-highlight);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .presentation-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .presentation {
+                padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+            }
+
+            .presentation-header h2 {
+                font-size: 28px;
+            }
+        }
+
         /* Author section */
         .author-section {
             padding: calc(var(--spacing) * 10) calc(var(--spacing) * 2);
@@ -1011,6 +1075,19 @@
                     <h3>Architecture & Workflow</h3>
                     <p>System design, data flow, and integration patterns</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentation Section -->
+    <section class="presentation" id="presentation">
+        <div class="presentation-container">
+            <div class="presentation-header">
+                <h2>Project Walkthrough</h2>
+                <p>Interactive presentation exploring Globis Edge 2.0 architecture, design decisions, and impact</p>
+            </div>
+            <div class="presentation-embed">
+                <iframe src="https://docs.google.com/presentation/d/12qhTHP_yOlDwDKV_QJ1hIj0v2LxQxSi8wT98wFy5lK0/embed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
         </div>
     </section>
