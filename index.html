@@ -328,34 +328,6 @@
             padding: calc(var(--spacing) * 2);
         }
 
-        /* Infographic Section */
-        .infographic-section {
-            padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .infographic-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .infographic-image {
-            max-width: 320px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .infographic-image:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: scale(1.05);
-        }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -959,13 +931,6 @@
         </div>
     </section>
 
-    <!-- Infographic Section -->
-    <section class="infographic-section" id="infographic">
-        <div class="infographic-container">
-            <img src="infographic.png" alt="Globis Edge Architecture and Workflow" class="infographic-image" id="infographic-thumb" />
-        </div>
-    </section>
-
     <!-- Modal for enlarged infographic -->
     <div class="modal" id="infographic-modal">
         <span class="modal-close" id="modal-close">&times;</span>
@@ -1062,6 +1027,12 @@
                     <h3>Full Documentation</h3>
                     <p>PRD, architecture, ethics, and Pi5 deployment guide</p>
                 </a>
+
+                <button id="infographic-card" class="link-card" style="border: none; background: inherit; cursor: pointer; padding: inherit;">
+                    <div class="link-card-icon">🏗️</div>
+                    <h3>Architecture & Workflow</h3>
+                    <p>System design, data flow, and integration patterns</p>
+                </button>
             </div>
         </div>
     </section>
@@ -1156,14 +1127,15 @@
 
         // Infographic modal functionality
         const modal = document.getElementById('infographic-modal');
-        const infographicThumb = document.getElementById('infographic-thumb');
+        const infographicCard = document.getElementById('infographic-card');
         const modalClose = document.getElementById('modal-close');
 
-        infographicThumb.addEventListener('click', () => {
+        infographicCard.addEventListener('click', (e) => {
+            e.preventDefault();
             modal.classList.add('active');
         });
 
-        infographicThumb.addEventListener('mouseenter', () => {
+        infographicCard.addEventListener('mouseenter', () => {
             modal.classList.add('active');
         });
 
