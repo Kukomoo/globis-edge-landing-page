@@ -70,8 +70,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 2);
-            padding-top: calc(var(--spacing) * 4 + 72px);
+            padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2);
+            padding-top: calc(var(--spacing) * 2.5 + 72px);
             position: relative;
             background: linear-gradient(180deg, var(--color-white) 0%, rgba(248, 248, 248, 0.3) 100%);
         }
@@ -79,15 +79,15 @@
         @media (max-width: 1024px) {
             .hero {
                 min-height: auto;
-                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
-                padding-top: calc(var(--spacing) * 3 + 72px);
+                padding: calc(var(--spacing) * 2) calc(var(--spacing) * 2);
+                padding-top: calc(var(--spacing) * 2 + 72px);
             }
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing) * 6);
+            gap: calc(var(--spacing) * 4);
             max-width: 1400px;
             width: 100%;
             z-index: 10;
@@ -97,16 +97,16 @@
         .hero-left {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 3);
+            gap: calc(var(--spacing) * 2);
         }
 
         .hero-header {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 2);
+            gap: calc(var(--spacing) * 1);
             align-items: center;
             text-align: center;
-            margin-bottom: calc(var(--spacing) * 2);
+            margin-bottom: calc(var(--spacing) * 1);
         }
 
         .hero-right {
@@ -118,21 +118,21 @@
         .hero-cta-section {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 3);
+            gap: calc(var(--spacing) * 2);
             text-align: left;
         }
 
         .hero-cta-primary-group {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 2);
+            gap: calc(var(--spacing) * 1.5);
         }
 
         .cta-writeup-btn {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 3);
+            padding: 20px 28px;
             background: var(--color-white);
             color: var(--color-text-dark);
             border: 3.5px solid var(--color-text-dark);
@@ -193,9 +193,9 @@
         }
 
         .cta-writeup-desc {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.5;
             opacity: 0.85;
             position: relative;
             z-index: 1;
@@ -212,7 +212,7 @@
         .cta-grid-main {
             grid-column: 1 / -1;
             padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .cta-grid-main .cta-writeup-label {
@@ -486,16 +486,16 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: calc(var(--spacing) * 2);
+            margin-bottom: calc(var(--spacing) * 1.5);
         }
 
         .feature-toggle {
-            padding: 12px 20px;
+            padding: 12px 40px 12px 20px;
             border: 3px solid var(--color-text-dark);
             background: var(--color-white);
             border-radius: 14px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             transition: all 200ms ease;
             position: relative;
@@ -535,7 +535,7 @@
         .facts-slider-container {
             border: 3.5px solid var(--color-text-dark);
             border-radius: 20px;
-            padding: calc(var(--spacing) * 3.5);
+            padding: calc(var(--spacing) * 2.5);
             background: var(--color-white);
             filter: url(#hand-drawn);
         }
@@ -565,7 +565,7 @@
         }
 
         .fact-metric {
-            font-size: 48px;
+            font-size: 40px;
             font-weight: 800;
             color: var(--color-text-dark);
             font-family: var(--font-display);
@@ -591,9 +591,9 @@
         }
 
         .fact-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--color-text-light);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
             font-family: var(--font-body);
         }
@@ -896,7 +896,7 @@
 
         /* TLDR Section */
         .tldr {
-            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 3);
+            padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2.5);
             max-width: 1200px;
             margin: 0 auto;
             background: var(--color-white);
@@ -906,10 +906,10 @@
             background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             border: 1.5px solid var(--color-border);
             border-radius: 24px;
-            padding: calc(var(--spacing) * 4);
+            padding: calc(var(--spacing) * 3);
             display: flex;
             align-items: center;
-            gap: calc(var(--spacing) * 3);
+            gap: calc(var(--spacing) * 2);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
             transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -986,7 +986,7 @@
 
         /* Intro Section */
         .intro {
-            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2.5);
             max-width: 1200px;
             margin: 0 auto;
             background: linear-gradient(180deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
@@ -996,10 +996,10 @@
             background: var(--color-white);
             border: 1.5px solid var(--color-border);
             border-radius: 24px;
-            padding: calc(var(--spacing) * 5);
+            padding: calc(var(--spacing) * 4);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing) * 5);
+            gap: calc(var(--spacing) * 4);
             align-items: center;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             transition: all 250ms ease;
