@@ -403,6 +403,29 @@
         section {
             scroll-margin-top: 80px;
         }
+
+        /* Embedded video */
+        .hero-video-container {
+            margin-top: 48px;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
+        }
+
+        .hero-video-container iframe {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        @media (max-width: 768px) {
+            .hero-video-container {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -411,7 +434,7 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-badge">Gemma 4 Good Hackathon Winner</div>
+            <div class="hero-badge">Gemma 4 Hackathon</div>
             <h1 class="hero-title">
                 Offline AI for <span class="hero-title-accent">Refugee Reception</span>
             </h1>
@@ -420,12 +443,16 @@
             </p>
 
             <div class="cta-group">
-                <a href="https://www.youtube.com/watch?v=VtwEi7SoPxA" class="cta-btn cta-btn-primary" target="_blank">
-                    <span>▶</span> Watch Demo (3 min)
+                <a href="https://github.com/Kukomoo/globis-edge" class="cta-btn cta-btn-primary" target="_blank">
+                    View on GitHub
                 </a>
-                <a href="https://youtube.com/shorts/pHhzpePO5_0?si=8FmIjY2sXJCkKtve" class="cta-btn cta-btn-secondary" target="_blank">
-                    Live Demo (30 sec)
+                <a href="https://www.kaggle.com/code/nadakhas/globis-edge" class="cta-btn cta-btn-secondary" target="_blank">
+                    Kaggle Notebook
                 </a>
+            </div>
+
+            <div class="hero-video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VtwEi7SoPxA?si=qrT8LyXwFghDf2B5" title="Globis Edge 2.0 — Multimodal Refugee Reception AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <div class="cta-group">
@@ -518,14 +545,14 @@
             <div class="links-grid">
                 <a href="https://www.youtube.com/watch?v=VtwEi7SoPxA" class="link-card" target="_blank">
                     <div class="link-card-icon">📹</div>
-                    <h3>Full Demo Video</h3>
-                    <p>3-minute walkthrough of the multimodal intake pipeline</p>
+                    <h3>Main Demo Video</h3>
+                    <p>Complete multimodal intake walkthrough</p>
                 </a>
 
                 <a href="https://youtube.com/shorts/pHhzpePO5_0?si=8FmIjY2sXJCkKtve" class="link-card" target="_blank">
                     <div class="link-card-icon">⚡</div>
-                    <h3>Live Demo (30s)</h3>
-                    <p>Quick preview of the UI in action</p>
+                    <h3>Quick Demo (1 min)</h3>
+                    <p>Fast preview of the UI in action</p>
                 </a>
 
                 <a href="https://github.com/Kukomoo/globis-edge" class="link-card" target="_blank">
