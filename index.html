@@ -671,28 +671,32 @@
         }
 
         @media (max-width: 768px) {
+            .tldr {
+                padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2);
+            }
+
             .tldr-card {
                 flex-direction: column;
                 text-align: center;
-                gap: calc(var(--spacing) * 2);
+                gap: calc(var(--spacing) * 1.5);
+                padding: calc(var(--spacing) * 2);
+                border-radius: 16px;
             }
 
             .tldr-icon {
-                width: 56px;
-                height: 56px;
-                font-size: 32px;
+                width: 48px;
+                height: 48px;
+                font-size: 28px;
+                margin: 0 auto;
+            }
+
+            .tldr-label {
+                font-size: 10px;
             }
 
             .tldr-text {
-                font-size: 14px;
-            }
-
-            .tldr {
-                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
-            }
-
-            .tldr-card {
-                padding: calc(var(--spacing) * 2.5);
+                font-size: 12px;
+                line-height: 1.5;
             }
         }
 
@@ -1044,8 +1048,56 @@
         }
 
         @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: calc(var(--spacing) * 2);
+            }
+
+            .feature-card {
+                padding: calc(var(--spacing) * 2.5);
+            }
+
+            .feature-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+
+            .feature-card p {
+                font-size: 12px;
+            }
+
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: calc(var(--spacing) * 2);
+            }
+
+            .link-card {
+                padding: calc(var(--spacing) * 2.5);
+            }
+
+            .link-card-icon {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .link-card h3 {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .link-card p {
+                font-size: 12px;
+            }
+
             .proof-of-work {
-                padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+                padding: calc(var(--spacing) * 6) calc(var(--spacing) * 2);
             }
 
             .proof-of-work-header h2 {
