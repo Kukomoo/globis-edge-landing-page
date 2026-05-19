@@ -338,15 +338,14 @@
         }
 
         .chip {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 3px;
-            padding: 3.5px 6px;
+            gap: 4px;
+            padding: 5px 10px;
             background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(248, 248, 248, 0.6) 100%);
-            border: 0.75px solid var(--color-border);
-            border-radius: 14px;
-            font-size: 5.5px;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            font-size: 12px;
             font-weight: 500;
             color: var(--color-text-dark);
             white-space: nowrap;
@@ -358,7 +357,7 @@
             background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             border-color: var(--color-highlight);
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 1024px) {
@@ -418,14 +417,14 @@
 
             .hero-chips {
                 grid-template-columns: 1fr 1fr;
-                gap: calc(var(--spacing) * 0.75);
+                gap: calc(var(--spacing) * 1);
             }
 
             .chip {
-                padding: 3px 5px;
-                font-size: 5px;
-                border-radius: 12px;
-                gap: 2px;
+                padding: 4px 8px;
+                font-size: 10px;
+                border-radius: 14px;
+                gap: 3px;
             }
 
             .hero-cta-section {
@@ -498,12 +497,12 @@
 
             .hero-chips {
                 grid-template-columns: 1fr 1fr;
-                gap: calc(var(--spacing) * 0.5);
+                gap: calc(var(--spacing) * 0.75);
             }
 
             .chip {
-                padding: 2.5px 4px;
-                font-size: 4.5px;
+                padding: 3px 7px;
+                font-size: 9px;
             }
 
             .cta-writeup-btn {
@@ -1739,7 +1738,7 @@
                 <div class="hero-header">
                     <div class="hero-badge">Gemma 4 Hackathon</div>
                     <h1 class="hero-title">
-                        Globis Edge <span class="hero-title-accent">A Gemma 4-powered offline caseworker companion</span>
+                        Globis Edge <span class="hero-title-accent">Offline caseworker companion [Powered by Gemma 4]</span>
                     </h1>
                 </div>
 
@@ -1775,15 +1774,15 @@
             </div>
 
             <div class="hero-right">
+                <div class="hero-video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VtwEi7SoPxA?si=qrT8LyXwFghDf2B5" title="Globis Edge 2.0 — Multimodal Refugee Reception AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
                 <div class="hero-chips">
                     <span class="chip">🔐 Secure multimodal intake</span>
                     <span class="chip">📱 Offline on Raspberry Pi</span>
                     <span class="chip">⚖️ PRIMES-aligned</span>
                     <span class="chip">🤝 Human-centered design</span>
-                </div>
-
-                <div class="hero-video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VtwEi7SoPxA?si=qrT8LyXwFghDf2B5" title="Globis Edge 2.0 — Multimodal Refugee Reception AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
