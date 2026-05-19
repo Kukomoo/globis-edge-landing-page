@@ -157,10 +157,10 @@
         }
 
         .cta-writeup-btn:hover {
-            background: var(--color-secondary);
-            border-color: var(--color-secondary);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+            background: linear-gradient(135deg, #7aa3b8 0%, var(--color-primary) 100%);
+            border-color: var(--color-highlight);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 48px rgba(147, 177, 194, 0.4);
         }
 
         .cta-writeup-btn:hover::before {
@@ -168,24 +168,24 @@
         }
 
         .cta-writeup-label {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.13em;
             text-transform: uppercase;
-            opacity: 0.9;
+            opacity: 0.95;
+            display: block;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 10px;
+        }
+
+        .cta-writeup-title {
+            font-size: 22px;
+            font-weight: 800;
             display: block;
             position: relative;
             z-index: 1;
             margin-bottom: 8px;
-        }
-
-        .cta-writeup-title {
-            font-size: 18px;
-            font-weight: 700;
-            display: block;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 6px;
         }
 
         .cta-writeup-desc {
@@ -416,22 +416,23 @@
             }
 
             .cta-writeup-btn {
-                padding: calc(var(--spacing) * 1.75) calc(var(--spacing) * 2);
+                padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2.5);
             }
 
             .cta-writeup-label {
-                font-size: 10px;
-                margin-bottom: 6px;
+                font-size: 11px;
+                margin-bottom: 8px;
             }
 
             .cta-writeup-title {
-                font-size: 15px;
-                margin-bottom: 4px;
+                font-size: 18px;
+                font-weight: 800;
+                margin-bottom: 6px;
             }
 
             .cta-writeup-desc {
-                font-size: 11px;
-                line-height: 1.4;
+                font-size: 12px;
+                line-height: 1.5;
             }
 
             .cta-secondary-group {
