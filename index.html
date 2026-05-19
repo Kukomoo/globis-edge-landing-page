@@ -201,6 +201,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: calc(var(--spacing) * 2);
+            width: 100%;
+        }
+
+        .cta-tertiary-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 2);
+            width: 100%;
         }
 
         .cta-btn-stacked {
@@ -1123,26 +1131,38 @@
 
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: calc(var(--spacing) * 3);
         }
 
         .link-card {
             background: var(--color-dark-bg);
-            border: 1px solid var(--color-border);
+            border: 2px solid var(--color-border);
             border-radius: 12px;
-            padding: calc(var(--spacing) * 2);
+            padding: calc(var(--spacing) * 3);
             text-align: center;
-            transition: all 200ms ease;
+            transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
             text-decoration: none;
             color: var(--color-text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
         }
 
         .link-card:hover {
             border-color: var(--color-primary);
-            background: var(--color-hover-bg);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
+            background: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0 12px 32px rgba(147, 177, 194, 0.3);
+            transform: translateY(-6px);
+        }
+
+        .link-card:hover h3,
+        .link-card:hover p {
+            color: var(--color-white);
         }
 
         .link-card-icon {
