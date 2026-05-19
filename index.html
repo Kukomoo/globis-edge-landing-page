@@ -328,71 +328,6 @@
             padding: calc(var(--spacing) * 2);
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeIn 250ms ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 16px;
-            animation: zoomIn 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 16px;
-            display: block;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 24px;
-            right: 32px;
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--color-white);
-            cursor: pointer;
-            transition: opacity 200ms ease;
-            z-index: 1001;
-        }
-
-        .modal-close:hover {
-            opacity: 0.8;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
         /* Features Section */
         .features {
             padding: calc(var(--spacing) * 12) calc(var(--spacing) * 2);
@@ -963,13 +898,6 @@
         </div>
     </section>
 
-    <!-- Modal for enlarged infographic -->
-    <div class="modal" id="infographic-modal">
-        <span class="modal-close" id="modal-close">&times;</span>
-        <div class="modal-content">
-            <img src="infographic.png" alt="Globis Edge Architecture and Workflow - Enlarged" />
-        </div>
-    </div>
 
     <!-- Features Section -->
     <section class="features" id="features">
@@ -1060,11 +988,11 @@
                     <p>PRD, architecture, ethics, and Pi5 deployment guide</p>
                 </a>
 
-                <button id="infographic-card" class="link-card" style="border: none; background: inherit; cursor: pointer; padding: inherit;">
+                <a href="infographic.png" target="_blank" class="link-card">
                     <div class="link-card-icon">🏗️</div>
                     <h3>Architecture & Workflow</h3>
                     <p>System design, data flow, and integration patterns</p>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -1165,26 +1093,6 @@
             observer.observe(el);
         });
 
-        // Infographic modal functionality
-        const modal = document.getElementById('infographic-modal');
-        const infographicCard = document.getElementById('infographic-card');
-        const modalClose = document.getElementById('modal-close');
-
-        infographicCard.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.classList.add('active');
-        });
-
-        modalClose.addEventListener('click', (e) => {
-            e.stopPropagation();
-            modal.classList.remove('active');
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
     </script>
 </body>
 </html>
