@@ -68,6 +68,7 @@
             align-items: center;
             justify-content: center;
             padding: calc(var(--spacing) * 4);
+            padding-top: calc(var(--spacing) * 4 + 70px);
             position: relative;
             background: linear-gradient(180deg, var(--color-white) 0%, rgba(248, 248, 248, 0.5) 100%);
         }
@@ -401,6 +402,119 @@
             line-height: 1.8;
         }
 
+        /* Proof of Work Section */
+        .proof-of-work {
+            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 2);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-white);
+        }
+
+        .proof-of-work-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 8);
+        }
+
+        .proof-of-work-header h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--color-text-dark);
+            font-family: var(--font-display);
+            letter-spacing: -0.01em;
+        }
+
+        .proof-of-work-header p {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .proof-of-work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: calc(var(--spacing) * 3);
+        }
+
+        .proof-card {
+            background: var(--color-white);
+            border: 1.5px solid var(--color-border);
+            border-radius: 16px;
+            padding: calc(var(--spacing) * 3);
+            transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 2);
+        }
+
+        .proof-card:hover {
+            border-color: var(--color-highlight);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
+            background: linear-gradient(135deg, rgba(248, 248, 248, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+        }
+
+        .proof-card-icon {
+            font-size: 32px;
+        }
+
+        .proof-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin: 0;
+        }
+
+        .proof-card-desc {
+            font-size: 14px;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .proof-card-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .proof-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--color-dark-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            transition: all 200ms ease;
+        }
+
+        .proof-card-link:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .proof-of-work {
+                padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+            }
+
+            .proof-of-work-header h2 {
+                font-size: 24px;
+            }
+
+            .proof-of-work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Links Section */
         .links {
             padding: calc(var(--spacing) * 12) calc(var(--spacing) * 2);
@@ -588,6 +702,71 @@
             color: var(--color-white);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 calc(var(--spacing) * 3);
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: all 200ms ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .nav-header {
+                padding: 0 calc(var(--spacing) * 2);
+                height: 60px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .nav-menu a {
+                font-size: 11px;
+            }
         }
 
         /* Logo */
@@ -930,6 +1109,19 @@
 <body>
     <div class="grid-line-v"></div>
 
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <a href="#hero" class="nav-brand">Globis Edge</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#proof-of-work">Proof of Work</a></li>
+                <li><a href="https://github.com/Kukomoo/globis-edge" target="_blank">GitHub</a></li>
+                <li><a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank">Kaggle</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <!-- Logo -->
     <a href="#hero" class="logo-header">
         <img src="logo.png" alt="Globis Edge" />
@@ -1114,6 +1306,60 @@
         </div>
     </section>
 
+    <!-- Proof of Work Section -->
+    <section class="proof-of-work" id="proof-of-work">
+        <div class="proof-of-work-header">
+            <h2>Proof of Work / Project Report</h2>
+            <p>1,500+ word technical writeup covering problem, architecture, five hero capabilities, and responsible AI implementation with Gemma 4</p>
+        </div>
+        <div class="proof-of-work-grid">
+            <!-- Technical Report Card -->
+            <div class="proof-card">
+                <div class="proof-card-icon">📄</div>
+                <h3>Technical Report</h3>
+                <p class="proof-card-desc">Complete Kaggle writeup covering problem framing, architecture decisions, and Gemma 4 integration.</p>
+                <div class="proof-card-links">
+                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" target="_blank" class="proof-card-link">GitHub</a>
+                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" target="_blank" class="proof-card-link">Kaggle</a>
+                </div>
+            </div>
+
+            <!-- Extended Documentation Card -->
+            <div class="proof-card">
+                <div class="proof-card-icon">📚</div>
+                <h3>Extended Docs</h3>
+                <p class="proof-card-desc">PRD, security invariants, verification trail, ethics & data protection policies.</p>
+                <div class="proof-card-links">
+                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/PRD.md" target="_blank" class="proof-card-link">PRD</a>
+                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/INVARIANTS.md" target="_blank" class="proof-card-link">Rules</a>
+                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/FINAL_AUDIT.md" target="_blank" class="proof-card-link">Audit</a>
+                </div>
+            </div>
+
+            <!-- Kaggle Submission Card -->
+            <div class="proof-card">
+                <div class="proof-card-icon">🏆</div>
+                <h3>Kaggle Submission</h3>
+                <p class="proof-card-desc">Interactive notebook with full implementation walkthrough and live demo examples.</p>
+                <div class="proof-card-links">
+                    <a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank" class="proof-card-link">Notebook</a>
+                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon" target="_blank" class="proof-card-link">Kaggle</a>
+                </div>
+            </div>
+
+            <!-- GitHub Repository Card -->
+            <div class="proof-card">
+                <div class="proof-card-icon">💻</div>
+                <h3>GitHub Repository</h3>
+                <p class="proof-card-desc">Full source code, tests, deployment configs, and all documentation files.</p>
+                <div class="proof-card-links">
+                    <a href="https://github.com/Kukomoo/globis-edge" target="_blank" class="proof-card-link">Repository</a>
+                    <a href="https://github.com/Kukomoo/globis-edge/tree/main/src" target="_blank" class="proof-card-link">Source</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Presentation Section -->
     <section class="presentation" id="presentation">
         <div class="presentation-container">
@@ -1183,8 +1429,17 @@
         </p>
 
         <div class="footer-social">
+            <a href="https://github.com/Kukomoo/globis-edge" target="_blank">
+                <span>📚</span> GitHub Repo
+            </a>
+            <a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank">
+                <span>🏆</span> Kaggle
+            </a>
+            <a href="https://www.youtube.com/watch?v=VtwEi7SoPxA" target="_blank">
+                <span>📹</span> Demo Video
+            </a>
             <a href="https://github.com/Kukomoo" target="_blank">
-                <span>💻</span> GitHub
+                <span>💻</span> My GitHub
             </a>
             <a href="https://www.linkedin.com/in/nadahkhas/" target="_blank">
                 <span>💼</span> LinkedIn
