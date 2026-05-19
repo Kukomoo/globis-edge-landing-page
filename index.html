@@ -880,8 +880,10 @@
 
         .proof-of-work-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: calc(var(--spacing) * 4);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .proof-card {
@@ -946,6 +948,40 @@
             background: var(--color-primary);
             color: var(--color-white);
             border-color: var(--color-primary);
+        }
+
+        .proof-card-embedded {
+            background: var(--color-white);
+            border: 1.5px solid var(--color-border);
+            border-radius: 20px;
+            padding: calc(var(--spacing) * 3);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 2);
+            transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+            min-height: 600px;
+        }
+
+        .proof-card-embedded:hover {
+            border-color: var(--color-highlight);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .github-embed {
+            flex: 1;
+            border: none;
+            border-radius: 12px;
+            background: var(--color-dark-bg);
+            min-height: 500px;
+        }
+
+        .proof-card-embedded-footer {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--color-border);
+            padding-top: calc(var(--spacing) * 2);
         }
 
         @media (max-width: 768px) {
@@ -1102,7 +1138,7 @@
             }
 
             .proof-of-work-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1929,37 +1965,12 @@
             <p>1,500+ word technical writeup covering problem, architecture, five hero capabilities, and responsible AI implementation with Gemma 4</p>
         </div>
         <div class="proof-of-work-grid">
-            <!-- Technical Report Card -->
-            <div class="proof-card">
-                <div class="proof-card-icon">📄</div>
-                <h3>Technical Report</h3>
-                <p class="proof-card-desc">Complete Kaggle writeup covering problem framing, architecture decisions, and Gemma 4 integration.</p>
-                <div class="proof-card-links">
-                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" target="_blank" class="proof-card-link">GitHub</a>
-                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" target="_blank" class="proof-card-link">Kaggle</a>
-                </div>
-            </div>
-
-            <!-- Extended Documentation Card -->
-            <div class="proof-card">
-                <div class="proof-card-icon">📚</div>
-                <h3>Extended Docs</h3>
-                <p class="proof-card-desc">PRD, security invariants, verification trail, ethics & data protection policies.</p>
-                <div class="proof-card-links">
-                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/PRD.md" target="_blank" class="proof-card-link">PRD</a>
-                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/INVARIANTS.md" target="_blank" class="proof-card-link">Rules</a>
-                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/FINAL_AUDIT.md" target="_blank" class="proof-card-link">Audit</a>
-                </div>
-            </div>
-
-            <!-- Kaggle Submission Card -->
-            <div class="proof-card">
-                <div class="proof-card-icon">🏆</div>
-                <h3>Kaggle Submission</h3>
-                <p class="proof-card-desc">Interactive notebook with full implementation walkthrough and live demo examples.</p>
-                <div class="proof-card-links">
-                    <a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank" class="proof-card-link">Notebook</a>
-                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon" target="_blank" class="proof-card-link">Kaggle</a>
+            <!-- Technical Report - GitHub Embedded -->
+            <div class="proof-card-embedded">
+                <iframe src="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" title="Kaggle Writeup" class="github-embed"></iframe>
+                <div class="proof-card-embedded-footer">
+                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" target="_blank" class="proof-card-link">View on GitHub →</a>
+                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" target="_blank" class="proof-card-link">View on Kaggle →</a>
                 </div>
             </div>
         </div>
