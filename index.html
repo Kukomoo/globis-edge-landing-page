@@ -95,7 +95,16 @@
         .hero-left {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 4);
+            gap: calc(var(--spacing) * 3);
+        }
+
+        .hero-header {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 2);
+            align-items: center;
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 2);
         }
 
         .hero-right {
@@ -108,6 +117,7 @@
             display: flex;
             flex-direction: column;
             gap: calc(var(--spacing) * 3);
+            text-align: left;
         }
 
         .hero-cta-primary-group {
@@ -261,16 +271,17 @@
         }
 
         .hero-badge {
-            display: inline-block;
-            align-self: flex-start;
+            display: inline-flex;
+            align-self: center;
+            justify-self: center;
             background: var(--color-dark-bg);
             border: 1px solid var(--color-border);
             border-radius: 50px;
-            padding: 12px 40px;
+            padding: 10px 36px;
             margin-bottom: 0;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.13em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--color-text-dark);
             font-family: var(--font-body);
@@ -286,25 +297,26 @@
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 52px);
-            font-weight: 600;
-            line-height: 1.15;
+            font-size: clamp(36px, 4.5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
             color: var(--color-text-dark);
-            letter-spacing: -0.015em;
-            text-align: left;
+            letter-spacing: -0.02em;
+            text-align: center;
             margin: 0;
         }
 
         .hero-title-accent {
-            color: var(--color-highlight);
-            font-weight: 700;
+            color: var(--color-text-light);
+            font-weight: 500;
             display: block;
-            background: linear-gradient(135deg, rgba(45, 45, 45, 0.05) 0%, rgba(45, 45, 45, 0.02) 100%);
-            padding: 6px 12px;
-            border-radius: 12px;
-            letter-spacing: -0.015em;
+            background: transparent;
+            padding: 8px 0;
+            border-radius: 0;
+            letter-spacing: -0.01em;
             word-spacing: 0.05em;
-            font-size: 0.50em;
+            font-size: 0.48em;
+            margin-top: 8px;
         }
 
         .hero-subtitle {
@@ -318,36 +330,35 @@
         }
 
         .hero-chips {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: calc(var(--spacing) * 1.5);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 1);
             margin: 0;
             max-width: none;
-            align-items: center;
         }
 
         .chip {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 7px 12px;
+            justify-content: center;
+            gap: 3px;
+            padding: 3.5px 6px;
             background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(248, 248, 248, 0.6) 100%);
-            border: 1px solid var(--color-border);
-            border-radius: 18px;
-            font-size: 11px;
+            border: 0.75px solid var(--color-border);
+            border-radius: 14px;
+            font-size: 5.5px;
             font-weight: 500;
             color: var(--color-text-dark);
             white-space: nowrap;
             transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
         }
 
         .chip:hover {
             background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             border-color: var(--color-highlight);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
         }
 
         @media (max-width: 1024px) {
@@ -384,29 +395,37 @@
                 gap: calc(var(--spacing) * 1.5);
             }
 
+            .hero-header {
+                gap: calc(var(--spacing) * 1.5);
+                margin-bottom: calc(var(--spacing) * 1.5);
+            }
+
             .hero-badge {
-                font-size: 10px;
-                padding: 8px 28px;
+                font-size: 9px;
+                padding: 7px 24px;
             }
 
             .hero-title {
-                font-size: clamp(24px, 5.5vw, 32px);
+                font-size: clamp(22px, 5.5vw, 32px);
+                text-align: center;
             }
 
             .hero-title-accent {
-                font-size: 0.45em;
-                padding: 4px 8px;
+                font-size: 0.44em;
+                padding: 6px 0;
+                margin-top: 4px;
             }
 
             .hero-chips {
+                grid-template-columns: 1fr 1fr;
                 gap: calc(var(--spacing) * 0.75);
             }
 
             .chip {
-                padding: 5px 10px;
-                font-size: 10px;
-                border-radius: 16px;
-                gap: 4px;
+                padding: 3px 5px;
+                font-size: 5px;
+                border-radius: 12px;
+                gap: 2px;
             }
 
             .hero-cta-section {
@@ -478,12 +497,13 @@
             }
 
             .hero-chips {
+                grid-template-columns: 1fr 1fr;
                 gap: calc(var(--spacing) * 0.5);
             }
 
             .chip {
-                padding: 4px 8px;
-                font-size: 9px;
+                padding: 2.5px 4px;
+                font-size: 4.5px;
             }
 
             .cta-writeup-btn {
@@ -593,7 +613,7 @@
 
         /* TLDR Section */
         .tldr {
-            padding: calc(var(--spacing) * 8) calc(var(--spacing) * 3);
+            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
             max-width: 1200px;
             margin: 0 auto;
             background: var(--color-white);
@@ -669,17 +689,17 @@
             }
 
             .tldr {
-                padding: calc(var(--spacing) * 6) calc(var(--spacing) * 2);
+                padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
             }
 
             .tldr-card {
-                padding: calc(var(--spacing) * 3);
+                padding: calc(var(--spacing) * 2.5);
             }
         }
 
         /* Intro Section */
         .intro {
-            padding: calc(var(--spacing) * 12) calc(var(--spacing) * 3);
+            padding: calc(var(--spacing) * 8) calc(var(--spacing) * 3);
             max-width: 1200px;
             margin: 0 auto;
             background: linear-gradient(180deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
@@ -1083,7 +1103,7 @@
             }
 
             .proof-of-work-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -1716,10 +1736,12 @@
     <section class="hero" id="hero">
         <div class="hero-content">
             <div class="hero-left">
-                <div class="hero-badge">Gemma 4 Hackathon</div>
-                <h1 class="hero-title">
-                    Globis Edge <span class="hero-title-accent">A Gemma 4-powered offline caseworker companion</span>
-                </h1>
+                <div class="hero-header">
+                    <div class="hero-badge">Gemma 4 Hackathon</div>
+                    <h1 class="hero-title">
+                        Globis Edge <span class="hero-title-accent">A Gemma 4-powered offline caseworker companion</span>
+                    </h1>
+                </div>
 
                 <div class="hero-cta-section">
                     <!-- Primary CTA: Proof of Work / Technical Writeup -->
@@ -1939,17 +1961,6 @@
                 <div class="proof-card-links">
                     <a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank" class="proof-card-link">Notebook</a>
                     <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon" target="_blank" class="proof-card-link">Kaggle</a>
-                </div>
-            </div>
-
-            <!-- GitHub Repository Card -->
-            <div class="proof-card">
-                <div class="proof-card-icon">💻</div>
-                <h3>GitHub Repository</h3>
-                <p class="proof-card-desc">Full source code, tests, deployment configs, and all documentation files.</p>
-                <div class="proof-card-links">
-                    <a href="https://github.com/Kukomoo/globis-edge" target="_blank" class="proof-card-link">Repository</a>
-                    <a href="https://github.com/Kukomoo/globis-edge/tree/main/src" target="_blank" class="proof-card-link">Source</a>
                 </div>
             </div>
         </div>
