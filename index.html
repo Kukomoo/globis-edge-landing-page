@@ -213,22 +213,25 @@
 
         .cta-btn-stacked {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+            gap: 6px;
+            padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2);
             font-size: 13px;
             font-weight: 600;
             border-radius: 12px;
-            border: 1.5px solid;
+            border: 2px solid var(--color-border);
             cursor: pointer;
             transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
             text-decoration: none;
-            white-space: nowrap;
             font-family: var(--font-body);
             letter-spacing: 0.2px;
             position: relative;
             overflow: hidden;
+            background: var(--color-dark-bg);
+            color: var(--color-text-dark);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .cta-btn-stacked::before {
@@ -240,42 +243,15 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.1);
             transition: left 250ms ease;
+            z-index: -1;
         }
 
-        .cta-btn-stacked-secondary {
-            background: var(--color-dark-bg);
-            color: var(--color-text-dark);
-            border-color: var(--color-border);
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .cta-btn-stacked-secondary:hover {
-            background: var(--color-white);
-            border-color: var(--color-highlight);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        }
-
-        .cta-btn-stacked-secondary:hover::before {
-            left: 100%;
-        }
-
-        .cta-btn-stacked-tertiary {
-            background: var(--color-white);
-            color: var(--color-text-dark);
-            border-color: var(--color-border);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .cta-btn-stacked-tertiary:hover {
-            background: var(--color-dark-bg);
-            border-color: var(--color-highlight);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
-
-        .cta-btn-stacked-tertiary:hover::before {
-            left: 100%;
+        .cta-btn-stacked:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(147, 177, 194, 0.25);
         }
 
         .hero-badge {
@@ -1922,26 +1898,25 @@
                         <span class="cta-writeup-desc">1,500-word technical deep-dive covering system architecture, five hero capabilities, challenges, and responsible AI implementation</span>
                     </a>
 
-                    <!-- Secondary CTA: Kaggle Submission -->
-                    <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" class="cta-btn-stacked cta-btn-stacked-secondary" target="_blank" style="width: 100%; text-align: center;">
-                        <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px;">🏆 Main Submission</span>
-                        <span>📝 View on Kaggle</span>
-                    </a>
-
-                    <!-- Tertiary CTAs -->
+                    <!-- Secondary CTAs in 2x2 Grid -->
                     <div class="cta-secondary-group">
-                        <a href="https://youtube.com/shorts/pHhzpePO5_0?si=hpIJk7ZKZ1UfyPTT" class="cta-btn-stacked cta-btn-stacked-secondary" target="_blank">
-                            ⚡ Live Demo (1 min)
+                        <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" class="cta-btn-stacked" target="_blank">
+                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">🏆 Main Submission</span>
+                            <span>View on Kaggle</span>
                         </a>
-                        <a href="https://www.kaggle.com/code/nadakhas/globis-edge" class="cta-btn-stacked cta-btn-stacked-secondary" target="_blank">
-                            📊 Kaggle Notebook
+                        <a href="https://youtube.com/shorts/pHhzpePO5_0?si=hpIJk7ZKZ1UfyPTT" class="cta-btn-stacked" target="_blank">
+                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">⚡ Live Demo</span>
+                            <span>1 min walkthrough</span>
+                        </a>
+                        <a href="https://www.kaggle.com/code/nadakhas/globis-edge" class="cta-btn-stacked" target="_blank">
+                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">📊 Kaggle Notebook</span>
+                            <span>Implementation guide</span>
+                        </a>
+                        <a href="https://github.com/Kukomoo/globis-edge" class="cta-btn-stacked" target="_blank">
+                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">💻 GitHub Repo</span>
+                            <span>Full source code</span>
                         </a>
                     </div>
-
-                    <!-- Quaternary CTA -->
-                    <a href="https://github.com/Kukomoo/globis-edge" class="cta-btn-stacked cta-btn-stacked-tertiary" target="_blank">
-                        💻 GitHub Repository
-                    </a>
                 </div>
             </div>
 
