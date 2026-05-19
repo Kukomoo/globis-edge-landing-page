@@ -1873,6 +1873,104 @@
             width: 100%;
         }
 
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .hamburger-menu span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--color-text-dark);
+            border-radius: 2px;
+            transition: all 300ms ease;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Navigation */
+        .nav-desktop {
+            display: flex;
+        }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 98;
+            animation: slideDown 300ms ease;
+        }
+
+        .nav-mobile.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-menu-mobile {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            margin: 0;
+            padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+            gap: 0;
+        }
+
+        .nav-menu-mobile li {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-menu-mobile li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-menu-mobile a {
+            display: block;
+            padding: calc(var(--spacing) * 1.5) 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: all 200ms ease;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu-mobile a:hover {
+            color: var(--color-text-dark);
+            padding-left: 8px;
+        }
+
         @media (max-width: 1024px) {
             .nav-header {
                 padding: 0 calc(var(--spacing) * 2);
@@ -1931,21 +2029,16 @@
                 padding: 0 calc(var(--spacing) * 1);
             }
 
-            .nav-header nav {
-                margin-left: calc(var(--spacing) * 0.5);
+            .nav-desktop {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
             }
 
             .nav-brand {
                 font-size: 14px;
-            }
-
-            .nav-menu {
-                gap: 8px;
-            }
-
-            .nav-menu a {
-                font-size: 9px;
-                letter-spacing: 0.2px;
             }
 
             .social-header {
@@ -2339,7 +2432,7 @@
     <!-- Navigation Header -->
     <header class="nav-header">
         <a href="#hero" class="nav-brand">Globis Edge</a>
-        <nav>
+        <nav class="nav-desktop">
             <ul class="nav-menu">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#proof-of-work">Proof of Work</a></li>
@@ -2347,7 +2440,22 @@
                 <li><a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank">Kaggle</a></li>
             </ul>
         </nav>
+        <button class="hamburger-menu" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <!-- Mobile Menu -->
+    <nav class="nav-mobile" id="mobileMenu">
+        <ul class="nav-menu-mobile">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#proof-of-work">Proof of Work</a></li>
+            <li><a href="https://github.com/Kukomoo/globis-edge" target="_blank">GitHub</a></li>
+            <li><a href="https://www.kaggle.com/code/nadakhas/globis-edge" target="_blank">Kaggle</a></li>
+        </ul>
+    </nav>
 
     <!-- Logo -->
     <a href="#hero" class="logo-header">
@@ -2739,6 +2847,32 @@
     </footer>
 
     <script>
+        // Hamburger Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.nav-menu-mobile a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-header') && !e.target.closest('.nav-mobile')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
         // Smooth scroll offset for fixed headers
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
