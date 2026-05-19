@@ -1204,35 +1204,35 @@
             background: var(--color-white);
             border: 1.5px solid var(--color-border);
             border-radius: 20px;
-            padding: calc(var(--spacing) * 1.95);
+            padding: calc(var(--spacing) * 1.2) calc(var(--spacing) * 1);
             transition: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 1.3);
+            gap: calc(var(--spacing) * 0.8);
         }
 
         .proof-card:hover {
             border-color: var(--color-highlight);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
             background: linear-gradient(135deg, rgba(248, 248, 248, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
         }
 
         .proof-card-icon {
-            font-size: 20.8px;
+            font-size: 16px;
         }
 
         .proof-card h3 {
-            font-size: 11.7px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--color-text-dark);
             margin: 0;
         }
 
         .proof-card-desc {
-            font-size: 9.1px;
+            font-size: 8px;
             color: var(--color-text-light);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
             flex-grow: 1;
         }
@@ -1268,47 +1268,47 @@
             background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             border: 3.5px solid var(--color-text-dark);
             border-radius: 20px;
-            padding: calc(var(--spacing) * 2.4);
+            padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 1.2);
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 1.5);
+            gap: calc(var(--spacing) * 0.9);
             transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
             cursor: pointer;
             position: relative;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             filter: url(#hand-drawn);
         }
 
         .proof-card-featured:hover {
             border-color: var(--color-highlight);
             background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(235, 235, 235, 0.8) 100%);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-6px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
         }
 
         .proof-featured-header {
             display: flex;
-            gap: calc(var(--spacing) * 1.2);
+            gap: calc(var(--spacing) * 0.8);
             align-items: flex-start;
         }
 
         .proof-featured-icon {
-            font-size: 20px;
+            font-size: 16px;
             line-height: 1;
             flex-shrink: 0;
         }
 
         .proof-featured-header h3 {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--color-text-dark);
-            margin: 0 0 4px 0;
+            margin: 0 0 2px 0;
         }
 
         .proof-featured-subtitle {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--color-text-light);
-            line-height: 1.5;
+            line-height: 1.4;
             margin: 0;
         }
 
@@ -1342,19 +1342,19 @@
         .proof-featured-cta {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.6);
+            gap: 3px;
+            padding: calc(var(--spacing) * 0.6) calc(var(--spacing) * 1.2);
             background: var(--color-text-dark);
             color: var(--color-white);
-            border: 2px solid var(--color-text-dark);
-            border-radius: 8px;
-            font-size: 10px;
+            border: 1.5px solid var(--color-text-dark);
+            border-radius: 6px;
+            font-size: 8px;
             font-weight: 700;
             text-decoration: none;
             transition: all 200ms ease;
             cursor: pointer;
             align-self: flex-start;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
             filter: url(#hand-drawn);
             font-family: var(--font-body);
         }
@@ -1674,41 +1674,46 @@
                 max-width: 100%;
             }
 
+            .proof-of-work-grid {
+                gap: calc(var(--spacing) * 1.5);
+            }
+
             .proof-card-featured {
-                padding: calc(var(--spacing) * 1.5);
-                gap: calc(var(--spacing) * 1);
+                padding: calc(var(--spacing) * 1) calc(var(--spacing) * 0.8);
+                gap: calc(var(--spacing) * 0.6);
             }
 
             .proof-featured-header {
-                gap: calc(var(--spacing) * 0.8);
+                gap: calc(var(--spacing) * 0.6);
             }
 
             .proof-featured-icon {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .proof-featured-header h3 {
-                font-size: 10px;
+                font-size: 9px;
             }
 
             .proof-featured-subtitle {
-                font-size: 8px;
+                font-size: 7px;
             }
 
             .proof-card {
-                padding: calc(var(--spacing) * 1.2);
+                padding: calc(var(--spacing) * 0.8) calc(var(--spacing) * 0.7);
+                gap: calc(var(--spacing) * 0.5);
             }
 
             .proof-card-icon {
-                font-size: 16px;
+                font-size: 13px;
             }
 
             .proof-card h3 {
-                font-size: 10px;
+                font-size: 8px;
             }
 
             .proof-card-desc {
-                font-size: 8px;
+                font-size: 7px;
             }
 
             .links-container {
