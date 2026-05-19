@@ -201,6 +201,34 @@
             z-index: 1;
         }
 
+        /* CTA Grid Container - All 4 buttons together */
+        .cta-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 2);
+            width: 100%;
+        }
+
+        .cta-grid-main {
+            grid-column: 1 / -1;
+            padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+            font-size: 14px;
+        }
+
+        .cta-grid-main .cta-writeup-label {
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+
+        .cta-grid-main .cta-writeup-title {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .cta-grid-main .cta-writeup-desc {
+            font-size: 12px;
+        }
+
         .cta-secondary-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -690,6 +718,20 @@
             .cta-writeup-desc {
                 font-size: 12px;
                 line-height: 1.5;
+            }
+
+            .cta-grid-container {
+                grid-template-columns: 1fr;
+                gap: calc(var(--spacing) * 1.5);
+            }
+
+            .cta-grid-main {
+                grid-column: 1;
+                padding: calc(var(--spacing) * 1.2) calc(var(--spacing) * 1.5);
+            }
+
+            .cta-grid-main .cta-writeup-title {
+                font-size: 14px;
             }
 
             .cta-secondary-group {
@@ -2158,15 +2200,16 @@
                 </div>
 
                 <div class="hero-cta-section">
-                    <!-- Primary CTA: Proof of Work / Technical Writeup -->
-                    <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" class="cta-writeup-btn" target="_blank">
-                        <span class="cta-writeup-label">📋 Proof of Work</span>
-                        <span class="cta-writeup-title">Read Kaggle Writeup</span>
-                        <span class="cta-writeup-desc">1,500-word technical deep-dive covering system architecture, five hero capabilities, challenges, and responsible AI implementation</span>
-                    </a>
+                    <!-- CTA Grid Container -->
+                    <div class="cta-grid-container">
+                        <!-- Primary CTA: Proof of Work (Top, spans full width) -->
+                        <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" class="cta-writeup-btn cta-grid-main" target="_blank">
+                            <span class="cta-writeup-label">📋 Proof of Work</span>
+                            <span class="cta-writeup-title">Read Kaggle Writeup</span>
+                            <span class="cta-writeup-desc">1,500-word technical deep-dive</span>
+                        </a>
 
-                    <!-- Secondary CTAs in 2x2 Grid -->
-                    <div class="cta-secondary-group">
+                        <!-- Secondary CTAs in Grid -->
                         <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" class="cta-btn-stacked" target="_blank">
                             <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">🏆 Main Submission</span>
                             <span>View on Kaggle</span>
