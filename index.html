@@ -1246,8 +1246,8 @@
         }
 
         .proof-card-featured {
-            background: linear-gradient(135deg, #1a2028 0%, #2d3a47 100%);
-            border: 2.5px solid var(--color-primary);
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
+            border: 3.5px solid var(--color-text-dark);
             border-radius: 20px;
             padding: calc(var(--spacing) * 4.5);
             display: flex;
@@ -1256,14 +1256,15 @@
             transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
             cursor: pointer;
             position: relative;
-            box-shadow: 0 12px 32px rgba(147, 177, 194, 0.2);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            filter: url(#hand-drawn);
         }
 
         .proof-card-featured:hover {
             border-color: var(--color-highlight);
-            background: linear-gradient(135deg, #2d3a47 0%, #3d4d58 100%);
-            box-shadow: 0 20px 48px rgba(147, 177, 194, 0.35);
-            transform: translateY(-10px);
+            background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(235, 235, 235, 0.8) 100%);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
         }
 
         .proof-featured-header {
@@ -1281,31 +1282,31 @@
         .proof-featured-header h3 {
             font-size: 22px;
             font-weight: 700;
-            color: var(--color-white);
+            color: var(--color-text-dark);
             margin: 0 0 8px 0;
         }
 
         .proof-featured-subtitle {
             font-size: 14px;
-            color: #b8c5ce;
+            color: var(--color-text-light);
             line-height: 1.6;
             margin: 0;
         }
 
         .proof-featured-content {
             padding: calc(var(--spacing) * 2) 0;
-            border-top: 1px solid rgba(147, 177, 194, 0.3);
-            border-bottom: 1px solid rgba(147, 177, 194, 0.3);
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
         }
 
         .proof-featured-section {
             font-size: 13px;
             line-height: 1.8;
-            color: #b8c5ce;
+            color: var(--color-text-light);
         }
 
         .proof-featured-section strong {
-            color: var(--color-white);
+            color: var(--color-text-dark);
             font-weight: 600;
         }
 
@@ -1323,24 +1324,26 @@
             align-items: center;
             gap: 8px;
             padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
-            background: var(--color-primary);
+            background: var(--color-text-dark);
             color: var(--color-white);
-            border: 2px solid var(--color-primary);
-            border-radius: 12px;
+            border: 3px solid var(--color-text-dark);
+            border-radius: 14px;
             font-size: 15px;
             font-weight: 700;
             text-decoration: none;
-            transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 200ms ease;
             cursor: pointer;
             align-self: flex-start;
-            box-shadow: 0 8px 20px rgba(147, 177, 194, 0.3);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            filter: url(#hand-drawn);
+            font-family: var(--font-body);
         }
 
         .proof-featured-cta:hover {
-            background: var(--color-highlight);
-            border-color: var(--color-highlight);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(147, 177, 194, 0.4);
+            background: var(--color-text-dark);
+            border-color: var(--color-text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 768px) {
