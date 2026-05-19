@@ -475,6 +475,98 @@
             opacity: 0.8;
         }
 
+        /* Author section */
+        .author-section {
+            padding: calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-top: 2px solid var(--color-border);
+        }
+
+        .author-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 4);
+            align-items: center;
+        }
+
+        .author-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.08);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .author-content h2 {
+            font-size: clamp(24px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-text-dark);
+        }
+
+        .author-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .author-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .author-social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-white);
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 200ms ease;
+        }
+
+        .author-social-btn:hover {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .author-container {
+                grid-template-columns: 1fr;
+                gap: calc(var(--spacing) * 2);
+            }
+
+            .author-image {
+                max-width: 100%;
+            }
+
+            .author-social {
+                flex-direction: column;
+            }
+
+            .author-social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         /* Embedded video */
         .hero-video-container {
             margin-top: 64px;
@@ -668,6 +760,35 @@
                     <h3>Full Documentation</h3>
                     <p>PRD, architecture, ethics, and Pi5 deployment guide</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="author-section" id="author">
+        <div class="author-container">
+            <div class="author-image">
+                <img src="./author.png" alt="Nada Khas - Author" style="background: linear-gradient(135deg, #f5f7fa 0%, #eef2f8 100%); aspect-ratio: 1;" />
+            </div>
+            <div class="author-content">
+                <h2>About the Author</h2>
+                <p>
+                    I'm Nada Khas, a technologist and humanitarian advocate building AI systems that serve vulnerable populations. Globis Edge 2.0 represents my commitment to creating responsible, edge-first intelligence for low-resource settings.
+                </p>
+                <p>
+                    With expertise in multimodal AI, constitutional auditing, and PRIMES-aligned data structures, I focus on bridging the gap between frontier AI and humanitarian needs. I believe technology should be accessible, transparent, and deeply ethical.
+                </p>
+                <div class="author-social">
+                    <a href="https://github.com/Kukomoo" class="author-social-btn" target="_blank">
+                        <span>💻</span> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/nadahkhas/" class="author-social-btn" target="_blank">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="https://x.com/Nado_Kukomo" class="author-social-btn" target="_blank">
+                        <span>𝕏</span> X
+                    </a>
+                </div>
             </div>
         </div>
     </section>
