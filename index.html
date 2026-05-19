@@ -1911,6 +1911,86 @@
 
             .nav-menu a {
                 font-size: 10px;
+                letter-spacing: 0.3px;
+            }
+
+            .social-header {
+                gap: 10px;
+            }
+
+            .social-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-header {
+                height: 56px;
+                padding: 0 calc(var(--spacing) * 1);
+            }
+
+            .nav-header nav {
+                margin-left: calc(var(--spacing) * 0.5);
+            }
+
+            .nav-brand {
+                font-size: 14px;
+            }
+
+            .nav-menu {
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 9px;
+                letter-spacing: 0.2px;
+            }
+
+            .social-header {
+                gap: 8px;
+            }
+
+            .social-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-header {
+                height: 52px;
+                padding: 0 calc(var(--spacing) * 0.75);
+            }
+
+            .nav-brand {
+                font-size: 13px;
+                gap: 6px;
+            }
+
+            .nav-header nav {
+                margin-left: calc(var(--spacing) * 0.25);
+            }
+
+            .nav-menu {
+                gap: 6px;
+            }
+
+            .nav-menu a {
+                font-size: 8px;
+                letter-spacing: 0.1px;
+            }
+
+            .social-header {
+                gap: 6px;
+            }
+
+            .social-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 11px;
             }
         }
 
