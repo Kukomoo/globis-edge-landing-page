@@ -1030,10 +1030,12 @@
         /* Intro Section */
         .intro {
             padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
-            width: 100%;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
             background: linear-gradient(180deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .intro-card {
@@ -1047,7 +1049,7 @@
             align-items: center;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             transition: all 250ms ease;
-            width: calc(100% - calc(var(--spacing) * 4));
+            width: 90vw;
             max-width: none;
         }
 
