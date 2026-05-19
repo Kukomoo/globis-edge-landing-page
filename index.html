@@ -345,6 +345,155 @@
             transform: translateY(-2px);
         }
 
+        /* Sketch-inspired Toggle Button */
+        .toggle-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--color-white);
+            border: 2.5px solid var(--color-text-dark);
+            border-radius: 50px;
+            padding: 8px 8px;
+            cursor: pointer;
+            transition: all 250ms ease;
+        }
+
+        .toggle-switch:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .toggle-option {
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 200ms ease;
+            color: var(--color-text-light);
+        }
+
+        .toggle-option.active {
+            background: var(--color-text-dark);
+            color: var(--color-white);
+            border-radius: 40px;
+        }
+
+        /* Gauge Meter */
+        .gauge-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding: calc(var(--spacing) * 3);
+            background: var(--color-white);
+            border: 2px solid var(--color-text-dark);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .gauge-meter {
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--color-text-dark);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .gauge-fill {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            border-top-color: var(--color-text-dark);
+            border-right-color: var(--color-text-dark);
+            animation: spin 2s ease-in-out forwards;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(270deg);
+            }
+        }
+
+        .gauge-label {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .gauge-label-text {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+        }
+
+        .gauge-label-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--color-text-dark);
+        }
+
+        /* Sketch-inspired Feature Card Toggles */
+        .feature-toggle-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .feature-toggle {
+            padding: 10px 16px;
+            border: 2px solid var(--color-text-dark);
+            background: var(--color-white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 200ms ease;
+            position: relative;
+        }
+
+        .feature-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-toggle.active {
+            background: var(--color-text-dark);
+            color: var(--color-white);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-toggle::after {
+            content: '✓';
+            display: none;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .feature-toggle.active::after {
+            display: inline;
+        }
+
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -1949,6 +2098,22 @@
         </div>
     </section>
 
+    <!-- Impact Gauge Section -->
+    <section class="gauge-section" style="padding: calc(var(--spacing) * 6) calc(var(--spacing) * 3); max-width: 1200px; margin: 0 auto; background: var(--color-white);">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">Edge Intelligence Metrics</h2>
+        <div class="gauge-container" style="max-width: 600px; margin: 0 auto;">
+            <div class="gauge-meter">
+                <div class="gauge-fill"></div>
+                <span>87%</span>
+            </div>
+            <div class="gauge-label">
+                <div class="gauge-label-text">Accuracy on Adré Scenario</div>
+                <div class="gauge-label-value">Multimodal Synthesis</div>
+                <p style="font-size: 12px; color: var(--color-text-light); margin-top: 8px;">11-12s end-to-end latency on Raspberry Pi 5</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Intro Section -->
     <section class="intro" id="about">
         <div class="intro-card">
@@ -1977,6 +2142,12 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <h2 class="section-title">Core Capabilities</h2>
+        <div class="feature-toggle-group" style="justify-content: center; margin-bottom: 48px;">
+            <button class="feature-toggle active" data-filter="all">All Features</button>
+            <button class="feature-toggle" data-filter="inference">Inference</button>
+            <button class="feature-toggle" data-filter="safety">Safety</button>
+            <button class="feature-toggle" data-filter="deployment">Deployment</button>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
@@ -2233,6 +2404,50 @@
             el.style.transition = 'all 600ms ease';
             observer.observe(el);
         });
+
+        // Feature toggle functionality
+        document.querySelectorAll('.feature-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+
+                // Update active state
+                document.querySelectorAll('.feature-toggle').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Filter cards
+                document.querySelectorAll('.feature-card').forEach(card => {
+                    const icon = card.querySelector('.feature-icon').textContent;
+                    const showCard = filter === 'all' ||
+                        (filter === 'inference' && ['🎯', '🎤'].includes(icon)) ||
+                        (filter === 'safety' && ['⚠️', '🛡️', '🔒'].includes(icon)) ||
+                        (filter === 'deployment' && ['📱', '⚡'].includes(icon));
+
+                    card.style.animation = 'none';
+                    setTimeout(() => {
+                        card.style.display = showCard ? 'flex' : 'none';
+                        card.style.animation = 'fadeIn 300ms ease forwards';
+                    }, 0);
+                });
+            });
+        });
+
+        // Add fade animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
 
     </script>
 </body>
