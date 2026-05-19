@@ -22,36 +22,6 @@ Globis Edge 2.0 is an offline, on-device caseworker companion for refugee recept
 - 📄 [Kaggle Writeup](https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461)
 - 📚 [Full Documentation](https://github.com/Kukomoo/globis-edge/blob/main/README.md)
 
-## Deployment
-
-### Netlify (Recommended)
-
-1. Fork this repository
-2. Go to [Netlify](https://netlify.com) and sign in
-3. Click "Add new site" → "Import an existing project"
-4. Select your GitHub repository
-5. Set:
-   - **Build command**: Leave blank
-   - **Publish directory**: `./` (root)
-6. Click "Deploy"
-
-Your landing page will be live in minutes.
-
-### Manual Deployment
-
-Simply drag `index.html` to [Netlify's drop zone](https://app.netlify.com/drop).
-
-### Local Development
-
-```bash
-# Open in browser
-open index.html
-
-# Or with Python's simple server
-python3 -m http.server 8000
-# Visit http://localhost:8000
-```
-
 ## Design
 
 Built with:
