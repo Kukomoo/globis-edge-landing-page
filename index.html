@@ -600,31 +600,65 @@
         .facts-nav {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 12px;
-            margin-top: calc(var(--spacing) * 2);
+            margin-top: calc(var(--spacing) * 2.5);
+            width: 100%;
+        }
+
+        .facts-slider-bar {
+            width: 100%;
+            max-width: 300px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to right, var(--color-text-dark), var(--color-text-dark));
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .facts-slider-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-text-dark);
+            cursor: pointer;
+            border: 2px solid var(--color-white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 200ms ease;
+        }
+
+        .facts-slider-bar::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .facts-slider-bar::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-text-dark);
+            cursor: pointer;
+            border: 2px solid var(--color-white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 200ms ease;
+        }
+
+        .facts-slider-bar::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .facts-slider-bar::-moz-range-track {
+            background: transparent;
+            border: none;
         }
 
         .facts-nav-btn {
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--color-text-dark);
-            border-radius: 50%;
-            background: var(--color-white);
-            cursor: pointer;
-            transition: all 200ms ease;
-            padding: 0;
-            position: relative;
-            font-family: var(--font-body);
-            filter: url(#hand-drawn);
-        }
-
-        .facts-nav-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .facts-nav-btn.active {
-            background: var(--color-text-dark);
-            transform: scale(1.3);
+            display: none;
         }
 
         @media (max-width: 1024px) {
@@ -2639,9 +2673,7 @@
                 </div>
             </div>
             <div class="facts-nav">
-                <button class="facts-nav-btn active" data-slide="0"></button>
-                <button class="facts-nav-btn" data-slide="1"></button>
-                <button class="facts-nav-btn" data-slide="2"></button>
+                <input type="range" class="facts-slider-bar" min="0" max="2" value="0" />
             </div>
         </div>
     </section>
@@ -3015,34 +3047,25 @@
         `;
         document.head.appendChild(style);
 
-        // Facts slider functionality
+        // Facts slider functionality with slider bar
         let currentSlide = 0;
         const factCards = document.querySelectorAll('.fact-card');
-        const navButtons = document.querySelectorAll('.facts-nav-btn');
+        const sliderBar = document.querySelector('.facts-slider-bar');
 
         function showSlide(n) {
             factCards.forEach(card => card.classList.remove('active'));
-            navButtons.forEach(btn => btn.classList.remove('active'));
 
-            if (n >= factCards.length) currentSlide = 0;
-            if (n < 0) currentSlide = factCards.length - 1;
+            if (n >= factCards.length) currentSlide = factCards.length - 1;
+            if (n < 0) currentSlide = 0;
 
             factCards[currentSlide].classList.add('active');
-            navButtons[currentSlide].classList.add('active');
+            sliderBar.value = currentSlide;
         }
 
-        navButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentSlide = parseInt(btn.dataset.slide);
-                showSlide(currentSlide);
-            });
-        });
-
-        // Optional: Auto-advance slides every 8 seconds
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % factCards.length;
+        sliderBar.addEventListener('input', (e) => {
+            currentSlide = parseInt(e.target.value);
             showSlide(currentSlide);
-        }, 8000);
+        });
 
     </script>
 </body>
