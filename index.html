@@ -589,7 +589,36 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
+        /* Logo */
+        .logo-header {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 100;
+        }
+
+        .logo-header img {
+            height: 40px;
+            width: auto;
+            display: block;
+            transition: all 200ms ease;
+        }
+
+        .logo-header:hover img {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
         @media (max-width: 768px) {
+            .logo-header {
+                top: 16px;
+                left: 16px;
+            }
+
+            .logo-header img {
+                height: 32px;
+            }
+
             .social-header {
                 top: 16px;
                 right: 16px;
@@ -900,6 +929,11 @@
 <body>
     <div class="grid-line-v"></div>
 
+    <!-- Logo -->
+    <a href="#hero" class="logo-header">
+        <img src="logo.png" alt="Globis Edge" />
+    </a>
+
     <!-- Social Header -->
     <div class="social-header">
         <a href="https://github.com/Kukomoo" class="social-icon" target="_blank" title="GitHub">
@@ -1134,6 +1168,7 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <img src="logo.png" alt="Globis Edge" style="height: 24px; width: auto; margin-bottom: 16px; opacity: 0.9;" />
         <p>
             Globis Edge 2.0 is a humanitarian intake prototype built for the
             <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon" target="_blank" class="footer-hackathon-link">
