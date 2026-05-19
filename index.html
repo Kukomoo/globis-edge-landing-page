@@ -1195,7 +1195,7 @@
         .proof-of-work-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: calc(var(--spacing) * 3);
+            gap: calc(var(--spacing) * 2.5);
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -1268,16 +1268,15 @@
             background: linear-gradient(135deg, var(--color-white) 0%, var(--color-dark-bg) 100%);
             border: 3.5px solid var(--color-text-dark);
             border-radius: 20px;
-            padding: calc(var(--spacing) * 3.6);
+            padding: calc(var(--spacing) * 2.4);
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 2.4);
+            gap: calc(var(--spacing) * 1.5);
             transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
             cursor: pointer;
             position: relative;
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
             filter: url(#hand-drawn);
-            grid-column: 1 / -1;
         }
 
         .proof-card-featured:hover {
@@ -1289,39 +1288,40 @@
 
         .proof-featured-header {
             display: flex;
-            gap: calc(var(--spacing) * 2);
+            gap: calc(var(--spacing) * 1.2);
             align-items: flex-start;
         }
 
         .proof-featured-icon {
-            font-size: 32px;
+            font-size: 20px;
             line-height: 1;
             flex-shrink: 0;
         }
 
         .proof-featured-header h3 {
-            font-size: 17.6px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--color-text-dark);
-            margin: 0 0 6px 0;
+            margin: 0 0 4px 0;
         }
 
         .proof-featured-subtitle {
-            font-size: 11.2px;
+            font-size: 9px;
             color: var(--color-text-light);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
         }
 
         .proof-featured-content {
-            padding: calc(var(--spacing) * 1.6) 0;
+            padding: calc(var(--spacing) * 0.8) 0;
             border-top: 1px solid rgba(0, 0, 0, 0.15);
             border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+            display: none;
         }
 
         .proof-featured-section {
-            font-size: 10.4px;
-            line-height: 1.8;
+            font-size: 9px;
+            line-height: 1.6;
             color: var(--color-text-light);
         }
 
@@ -1331,30 +1331,30 @@
         }
 
         .proof-featured-section ul {
-            margin: 9.6px 0 0 0;
-            padding-left: 16px;
+            margin: 6px 0 0 0;
+            padding-left: 12px;
         }
 
         .proof-featured-section li {
-            margin-bottom: 6.4px;
+            margin-bottom: 4px;
         }
 
         .proof-featured-cta {
             display: inline-flex;
             align-items: center;
-            gap: 6.4px;
-            padding: calc(var(--spacing) * 1.6) calc(var(--spacing) * 2.4);
+            gap: 4px;
+            padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.6);
             background: var(--color-text-dark);
             color: var(--color-white);
-            border: 2.4px solid var(--color-text-dark);
-            border-radius: 11.2px;
-            font-size: 12px;
+            border: 2px solid var(--color-text-dark);
+            border-radius: 8px;
+            font-size: 10px;
             font-weight: 700;
             text-decoration: none;
             transition: all 200ms ease;
             cursor: pointer;
             align-self: flex-start;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             filter: url(#hand-drawn);
             font-family: var(--font-body);
         }
@@ -1675,25 +1675,24 @@
             }
 
             .proof-card-featured {
-                grid-column: 1;
-                padding: calc(var(--spacing) * 2.4);
-                gap: calc(var(--spacing) * 1.5);
+                padding: calc(var(--spacing) * 1.5);
+                gap: calc(var(--spacing) * 1);
             }
 
             .proof-featured-header {
-                gap: calc(var(--spacing) * 1.2);
+                gap: calc(var(--spacing) * 0.8);
             }
 
             .proof-featured-icon {
-                font-size: 24px;
+                font-size: 16px;
             }
 
             .proof-featured-header h3 {
-                font-size: 13.2px;
+                font-size: 10px;
             }
 
             .proof-featured-subtitle {
-                font-size: 10px;
+                font-size: 8px;
             }
 
             .proof-card {
