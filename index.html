@@ -69,12 +69,12 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 2);
-            padding-top: calc(var(--spacing) * 2.5 + 72px);
+            padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+            padding-top: calc(var(--spacing) * 2 + 72px);
             position: relative;
             background: linear-gradient(180deg, var(--color-white) 0%, rgba(248, 248, 248, 0.3) 100%);
         }
@@ -88,35 +88,33 @@
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing) * 4);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 3);
             max-width: 1400px;
             width: 100%;
             z-index: 10;
-            align-items: center;
-        }
-
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing) * 2);
-            margin-top: calc(var(--spacing) * 8);
         }
 
         .hero-header {
             display: flex;
             flex-direction: column;
             gap: calc(var(--spacing) * 1);
-            align-items: center;
-            text-align: center;
-            margin-bottom: calc(var(--spacing) * 1);
+            align-items: flex-start;
+            text-align: left;
         }
 
-        .hero-right {
-            display: flex;
-            flex-direction: column;
+        .hero-videos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: calc(var(--spacing) * 2);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-videos {
+                grid-template-columns: 1fr;
+            }
         }
 
         .hero-cta-section {
@@ -933,6 +931,34 @@
         @keyframes bounce {
             0%, 100% { transform: translateY(0); opacity: 0.6; }
             50% { transform: translateY(12px); opacity: 1; }
+        }
+
+        /* CTA Section (Buttons) */
+        .cta-section {
+            padding: calc(var(--spacing) * 4) calc(var(--spacing) * 2);
+            background: var(--color-white);
+            width: 100%;
+        }
+
+        .cta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing) * 4);
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 1.5);
+        }
+
+        @media (max-width: 768px) {
+            .cta-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* TLDR Section */
@@ -2647,46 +2673,14 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-left">
-                <div class="hero-header">
-                    <div class="hero-badge">Gemma 4 Hackathon</div>
-                    <h1 class="hero-title">
-                        Globis Edge <span class="hero-title-accent">Offline caseworker companion [Powered by Gemma 4]</span>
-                    </h1>
-                </div>
-
-                <div class="hero-cta-section">
-                    <!-- CTA Grid Container -->
-                    <div class="cta-grid-container">
-                        <!-- Primary CTA: Proof of Work (Top, spans full width) -->
-                        <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" class="cta-writeup-btn cta-grid-main" target="_blank">
-                            <span class="cta-writeup-label">📋 Proof of Work</span>
-                            <span class="cta-writeup-title">Read Kaggle Writeup</span>
-                            <span class="cta-writeup-desc">1,500-word technical deep-dive</span>
-                        </a>
-
-                        <!-- Secondary CTAs in Grid -->
-                        <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" class="cta-btn-stacked" target="_blank">
-                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">🏆 Main Submission</span>
-                            <span>View on Kaggle</span>
-                        </a>
-                        <a href="https://youtube.com/shorts/pHhzpePO5_0?si=hpIJk7ZKZ1UfyPTT" class="cta-btn-stacked" target="_blank">
-                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">⚡ Live Demo</span>
-                            <span>1 min walkthrough</span>
-                        </a>
-                        <a href="https://www.kaggle.com/code/nadakhas/globis-edge" class="cta-btn-stacked" target="_blank">
-                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">📊 Kaggle Notebook</span>
-                            <span>Implementation guide</span>
-                        </a>
-                        <a href="https://github.com/Kukomoo/globis-edge" class="cta-btn-stacked" target="_blank">
-                            <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">💻 GitHub Repo</span>
-                            <span>Full source code</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="hero-header">
+                <div class="hero-badge">Gemma 4 Hackathon</div>
+                <h1 class="hero-title">
+                    Globis Edge <span class="hero-title-accent">Offline caseworker companion [Powered by Gemma 4]</span>
+                </h1>
             </div>
 
-            <div class="hero-right">
+            <div class="hero-videos">
                 <div class="hero-video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/VtwEi7SoPxA?si=qrT8LyXwFghDf2B5" title="Globis Edge 2.0 — Multimodal Refugee Reception AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
@@ -2694,13 +2688,43 @@
                 <div class="hero-video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/pFx8Ka6nHPo?si=Iz9SUNzqqfgRReU4" title="Globis Edge Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
+            </div>
 
-                <div class="hero-chips">
-                    <span class="chip">🔐 Secure multimodal intake</span>
-                    <span class="chip">📱 Offline on Raspberry Pi</span>
-                    <span class="chip">⚖️ PRIMES-aligned</span>
-                    <span class="chip">🤝 Human-centered design</span>
-                </div>
+            <div class="hero-chips">
+                <span class="chip">🔐 Secure multimodal intake</span>
+                <span class="chip">📱 Offline on Raspberry Pi</span>
+                <span class="chip">⚖️ PRIMES-aligned</span>
+                <span class="chip">🤝 Human-centered design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section (Buttons before TLDR) -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <div class="cta-buttons">
+                <a href="https://github.com/Kukomoo/globis-edge/blob/main/KAGGLE_WRITEUP.md" class="cta-writeup-btn cta-grid-main" target="_blank">
+                    <span class="cta-writeup-label">📋 Proof of Work</span>
+                    <span class="cta-writeup-title">Read Kaggle Writeup</span>
+                    <span class="cta-writeup-desc">1,500-word technical deep-dive</span>
+                </a>
+
+                <a href="https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461" class="cta-btn-stacked" target="_blank">
+                    <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">🏆 Main Submission</span>
+                    <span>View on Kaggle</span>
+                </a>
+                <a href="https://youtube.com/shorts/pHhzpePO5_0?si=hpIJk7ZKZ1UfyPTT" class="cta-btn-stacked" target="_blank">
+                    <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">⚡ Live Demo</span>
+                    <span>1 min walkthrough</span>
+                </a>
+                <a href="https://www.kaggle.com/code/nadakhas/globis-edge" class="cta-btn-stacked" target="_blank">
+                    <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">📊 Kaggle Notebook</span>
+                    <span>Implementation guide</span>
+                </a>
+                <a href="https://github.com/Kukomoo/globis-edge" class="cta-btn-stacked" target="_blank">
+                    <span style="display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;">💻 GitHub Repo</span>
+                    <span>Full source code</span>
+                </a>
             </div>
         </div>
     </section>
