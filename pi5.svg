@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-label="Stylized Raspberry Pi 5 inside transparent acrylic case">
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07995d"/>
+      <stop offset=".55" stop-color="#008a4f"/>
+      <stop offset="1" stop-color="#01693f"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9f7ee"/>
+      <stop offset=".22" stop-color="#bcbcaf"/>
+      <stop offset=".55" stop-color="#efefe8"/>
+      <stop offset="1" stop-color="#6f736e"/>
+    </linearGradient>
+    <linearGradient id="blackChip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#222821"/>
+      <stop offset=".5" stop-color="#060907"/>
+      <stop offset="1" stop-color="#33372f"/>
+    </linearGradient>
+    <linearGradient id="acrylic" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".82"/>
+      <stop offset=".48" stop-color="#eaffff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".55"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#000" flood-opacity=".16"/>
+    </filter>
+    <filter id="inkWobble">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+    <pattern id="traces" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-11)">
+      <path d="M3 7h18m-8 0v18m15-10h6M1 28h13m10-23v8" fill="none" stroke="#38e09c" stroke-width="1" opacity=".55"/>
+      <circle cx="25" cy="24" r="1.7" fill="#a5f0c8" opacity=".55"/>
+    </pattern>
+    <style>
+      .ink{stroke:#050505;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#inkWobble)}
+      .thin{stroke:#050505;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .hair{stroke:#050505;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+      .shine{stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.7}
+      .label{font:700 30px/1.1 Arial, Helvetica, sans-serif;letter-spacing:.3px;fill:#f5fff3}
+      .small{font:700 14px Arial, Helvetica, sans-serif;fill:#f5fff3}
+    </style>
+  </defs>
+
+  <!-- decorative sticker sparkles -->
+  <g class="ink" fill="none">
+    <path d="M374 120c26 0 12 58 42 75 22 13 74 6 74 34s-52 22-74 35c-30 17-16 75-42 75s-14-58-43-75c-22-13-74-7-74-35s52-21 74-34c29-17 17-75 43-75z" fill="#fff"/>
+    <path d="M374 155c11 48 27 64 75 75-48 10-64 26-75 74-10-48-26-64-74-74 48-11 64-27 74-75z" fill="#17b978" stroke="none"/>
+    <path d="M300 326c15 0 7 34 25 44 13 8 43 4 43 20s-30 13-43 21c-18 10-10 44-25 44s-8-34-26-44c-13-8-43-4-43-21s30-12 43-20c18-10 11-44 26-44z" fill="#fff"/>
+    <path d="M300 347c6 27 15 36 43 43-28 6-37 15-43 43-7-28-16-37-44-43 28-7 37-16 44-43z" fill="#17c481" stroke="none"/>
+    <path d="M217 590c19 0 9 44 32 57 17 10 56 5 56 26s-39 16-56 26c-23 13-13 57-32 57s-10-44-33-57c-17-10-56-5-56-26s39-16 56-26c23-13 14-57 33-57z" fill="#fff"/>
+    <path d="M217 617c8 36 20 48 56 56-36 8-48 20-56 56-8-36-20-48-56-56 36-8 48-20 56-56z" fill="#ff6fa3" stroke="none"/>
+    <path d="M1140 783c18 0 9 41 30 53 16 9 52 4 52 24s-36 15-52 24c-21 12-12 53-30 53s-9-41-31-53c-15-9-52-4-52-24s37-15 52-24c22-12 13-53 31-53z" fill="#fff"/>
+    <path d="M1140 808c7 33 18 44 52 52-34 7-45 18-52 52-8-34-19-45-52-52 33-8 44-19 52-52z" fill="#ffb21d" stroke="none"/>
+  </g>
+
+  <!-- right green signal wedges -->
+  <g class="ink">
+    <path d="M1302 221l70 84-112 44z" fill="#fff"/>
+    <path d="M1303 249l48 57-77 31z" fill="#19b978" stroke="none"/>
+    <path d="M1408 336l4 76-128-22z" fill="#fff"/>
+    <path d="M1390 354l3 47-84-14z" fill="#19b978" stroke="none"/>
+    <path d="M1374 436l-42 66-80-94z" fill="#fff"/>
+    <path d="M1357 444l-27 42-52-61z" fill="#19b978" stroke="none"/>
+  </g>
+
+  <!-- main angled device group -->
+  <g transform="translate(270 123) rotate(11 510 355)" filter="url(#softShadow)">
+    <!-- acrylic outer case -->
+    <path class="ink" d="M130 145h748c35 0 64 28 64 64v426c0 36-29 64-64 64H130c-35 0-64-28-64-64V209c0-36 29-64 64-64z" fill="url(#acrylic)" opacity=".72"/>
+    <path class="thin" d="M147 174h714c28 0 50 23 50 51v392c0 28-22 51-50 51H147c-28 0-51-23-51-51V225c0-28 23-51 51-51z" fill="none" opacity=".92"/>
+    <path class="hair" d="M101 604h811M112 225h795M132 668l-34-42M873 668l38-45M132 174l-35 43M870 174l39 47" fill="none" opacity=".55"/>
+    <path class="shine" d="M137 188h690M103 585h765M99 251v288M889 238v315"/>
+
+    <!-- corner posts -->
+    <g class="ink">
+      <circle cx="137" cy="213" r="34" fill="#fff" opacity=".62"/>
+      <circle cx="137" cy="213" r="20" fill="none"/>
+      <circle cx="855" cy="213" r="34" fill="#fff" opacity=".62"/>
+      <circle cx="855" cy="213" r="20" fill="none"/>
+      <circle cx="137" cy="618" r="34" fill="#fff" opacity=".62"/>
+      <circle cx="137" cy="618" r="20" fill="none"/>
+      <circle cx="855" cy="618" r="34" fill="#fff" opacity=".62"/>
+      <circle cx="855" cy="618" r="20" fill="none"/>
+    </g>
+
+    <!-- PCB -->
+    <g transform="translate(146 215)">
+      <rect class="ink" x="0" y="0" width="708" height="398" rx="12" fill="url(#board)"/>
+      <rect x="8" y="8" width="692" height="382" rx="9" fill="url(#traces)" opacity=".75"/>
+      <path class="hair" d="M22 67h122v42h74v88h96m-260 77h88v48h159m125-285h45v120h85m-403 219h116v-67h87v-98h61m134 131h70v-83h64" fill="none" stroke="#62f0aa" opacity=".75"/>
+
+      <!-- GPIO pins -->
+      <g transform="translate(210 36)" class="thin">
+        <rect x="-8" y="-16" width="376" height="40" fill="#151814"/>
+        <g fill="#121510">
+          <script type="application/ecmascript"><![CDATA[]]></script>
+        </g>
+      </g>
+      <g transform="translate(207 27)">
+        <g class="thin" fill="#111">
+          <rect x="0" y="0" width="10" height="54" rx="3"/><rect x="18" y="0" width="10" height="54" rx="3"/><rect x="36" y="0" width="10" height="54" rx="3"/><rect x="54" y="0" width="10" height="54" rx="3"/><rect x="72" y="0" width="10" height="54" rx="3"/><rect x="90" y="0" width="10" height="54" rx="3"/><rect x="108" y="0" width="10" height="54" rx="3"/><rect x="126" y="0" width="10" height="54" rx="3"/><rect x="144" y="0" width="10" height="54" rx="3"/><rect x="162" y="0" width="10" height="54" rx="3"/><rect x="180" y="0" width="10" height="54" rx="3"/><rect x="198" y="0" width="10" height="54" rx="3"/><rect x="216" y="0" width="10" height="54" rx="3"/><rect x="234" y="0" width="10" height="54" rx="3"/><rect x="252" y="0" width="10" height="54" rx="3"/><rect x="270" y="0" width="10" height="54" rx="3"/><rect x="288" y="0" width="10" height="54" rx="3"/><rect x="306" y="0" width="10" height="54" rx="3"/><rect x="324" y="0" width="10" height="54" rx="3"/><rect x="342" y="0" width="10" height="54" rx="3"/>
+        </g>
+      </g>
+
+      <!-- labels -->
+      <text class="label" x="290" y="112">Raspberry Pi</text>
+      <rect class="thin" x="475" y="82" width="35" height="35" rx="5" fill="none" stroke="#fff"/>
+      <text class="label" x="484" y="110" font-size="28">5</text>
+      <text class="label" x="275" y="338" font-size="44">HDMI</text>
+
+      <!-- raspberry logo simplified -->
+      <g transform="translate(73 159)" fill="#fff" stroke="#fff" stroke-width="2">
+        <circle cx="38" cy="46" r="15"/><circle cx="61" cy="46" r="15"/><circle cx="26" cy="68" r="15"/><circle cx="51" cy="70" r="15"/><circle cx="75" cy="68" r="15"/><circle cx="39" cy="92" r="15"/><circle cx="63" cy="92" r="15"/>
+        <path d="M51 26c-12-13-9-28 0-36 10 8 13 23 0 36z" fill="#fff"/>
+      </g>
+
+      <!-- chips -->
+      <g class="ink">
+        <rect x="356" y="148" width="118" height="88" rx="5" fill="url(#blackChip)"/>
+        <rect x="527" y="120" width="116" height="96" rx="5" fill="url(#blackChip)"/>
+        <rect x="106" y="272" width="58" height="56" rx="4" fill="#111912"/>
+        <rect x="175" y="244" width="42" height="42" rx="4" fill="#111912"/>
+        <rect x="662" y="270" width="35" height="48" rx="4" fill="#111912"/>
+      </g>
+      <g class="hair" opacity=".55">
+        <path d="M365 160h98M365 178h98M365 196h98M537 136h95M537 154h95M537 172h95M537 190h95"/>
+      </g>
+
+      <!-- metal modules -->
+      <g class="ink">
+        <path d="M232 92h118v78H232z" fill="url(#metal)"/>
+        <path d="M300 215h140v95H300z" fill="url(#metal)"/>
+        <path d="M315 227h110v65H315z" fill="#d4d4ca"/>
+        <path d="M600 320h108v70H600z" fill="url(#metal)"/>
+      </g>
+
+      <!-- ports right -->
+      <g class="ink">
+        <rect x="618" y="44" width="89" height="70" rx="5" fill="url(#metal)"/>
+        <rect x="628" y="112" width="80" height="54" rx="4" fill="#111"/>
+        <rect x="618" y="170" width="89" height="70" rx="5" fill="url(#metal)"/>
+        <rect x="628" y="238" width="80" height="54" rx="4" fill="#111"/>
+        <rect x="584" y="285" width="124" height="100" rx="7" fill="url(#metal)"/>
+        <rect x="604" y="315" width="82" height="45" rx="4" fill="#121212"/>
+        <path d="M704 54h-25m25 16h-33m33 16h-21M704 182h-25m25 16h-33m33 16h-21" fill="none"/>
+      </g>
+
+      <!-- small connectors bottom and misc -->
+      <g class="ink">
+        <rect x="24" y="331" width="86" height="32" rx="5" fill="#151515"/>
+        <rect x="34" y="339" width="63" height="15" rx="3" fill="#e9ece2"/>
+        <rect x="151" y="342" width="58" height="28" rx="5" fill="#e9ece2"/>
+        <rect x="225" y="343" width="58" height="28" rx="5" fill="#e9ece2"/>
+        <rect x="478" y="287" width="28" height="93" rx="5" fill="#151515"/>
+        <rect x="533" y="287" width="28" height="93" rx="5" fill="#151515"/>
+        <rect x="24" y="105" width="21" height="112" rx="5" fill="#151515"/>
+      </g>
+
+      <!-- tiny parts -->
+      <g class="thin">
+        <circle cx="40" cy="38" r="13" fill="#d9c76d"/>
+        <circle cx="74" cy="38" r="9" fill="#d9c76d"/>
+        <rect x="52" y="260" width="15" height="20" fill="#111"/>
+        <rect x="80" y="260" width="15" height="20" fill="#111"/>
+        <rect x="485" y="247" width="52" height="24" rx="3" fill="#111"/>
+        <rect x="640" y="16" width="42" height="26" rx="4" fill="#f8f8ef"/>
+        <rect x="648" y="20" width="16" height="18" rx="2" fill="#111"/>
+        <rect x="84" y="21" width="16" height="72" fill="#111"/>
+        <rect x="93" y="21" width="10" height="72" fill="#fff"/>
+      </g>
+    </g>
+
+    <!-- case lip lines over board -->
+    <path class="thin" d="M112 616h785M111 203h793M123 205v407M887 215v392" fill="none" opacity=".8"/>
+    <path class="hair" d="M151 236h704M152 593h705" fill="none" opacity=".55"/>
+  </g>
+</svg>

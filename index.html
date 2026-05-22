@@ -2632,6 +2632,141 @@
                 margin-bottom: 36px;
             }
         }
+
+        /* Build Simulator Section */
+        .build-simulator-section {
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 2);
+            background: var(--color-white);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .build-simulator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .build-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing) * 3);
+        }
+
+        .build-header h2 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--color-text-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .build-header p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--color-text-light);
+            font-size: clamp(14px, 2vw, 16px);
+            line-height: 1.6;
+        }
+
+        .build-simulator-wrapper {
+            background: var(--color-dark-bg);
+            padding: calc(var(--spacing) * 2);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .build-canvas {
+            display: block;
+            width: 100%;
+            height: 500px;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .build-canvas:active {
+            cursor: grabbing;
+        }
+
+        .build-instructions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--spacing) * 1);
+            margin-top: calc(var(--spacing) * 1.5);
+        }
+
+        .instruction-step {
+            padding: calc(var(--spacing) * 1.2);
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-border);
+            border-radius: 8px;
+            opacity: 0.62;
+            transition: all 200ms ease;
+        }
+
+        .instruction-step.active {
+            border-left-color: var(--color-text-dark);
+            opacity: 1;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .instruction-step h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--color-text-dark);
+        }
+
+        .instruction-step p {
+            font-size: 12px;
+            color: var(--color-text-light);
+            line-height: 1.5;
+        }
+
+        .build-feedback {
+            display: none;
+            margin-top: calc(var(--spacing) * 1.5);
+            padding: calc(var(--spacing) * 1);
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 8px;
+            color: #2e7d32;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .build-feedback.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .build-canvas {
+                height: 400px;
+            }
+
+            .build-instructions {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .build-simulator-section {
+                padding: calc(var(--spacing) * 3) var(--spacing);
+            }
+
+            .build-simulator-wrapper {
+                padding: var(--spacing);
+            }
+
+            .build-canvas {
+                height: 420px;
+            }
+
+            .build-instructions {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2867,6 +3002,39 @@
                 <div class="feature-icon">⚡</div>
                 <h3><a href="https://deepmind.google/models/gemma/gemma-4/" target="_blank" style="text-decoration: none; color: inherit;">Powered by Gemma 4</a></h3>
                 <p>Google's multimodal AI model enabling advanced inference on edge devices with native function calling and tool use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Build Simulator Section -->
+    <section class="build-simulator-section" id="build-simulator">
+        <div class="build-simulator-container">
+            <div class="build-header">
+                <h2>Build It Yourself</h2>
+                <p>Drag the hardware pieces onto the workbench. The Raspberry Pi component is rendered from the exact SVG artwork used for the detailed Pi 5 case illustration.</p>
+            </div>
+
+            <div class="build-simulator-wrapper">
+                <canvas id="buildCanvas" class="build-canvas" aria-label="Interactive hardware build simulator"></canvas>
+                <div class="build-instructions">
+                    <div class="instruction-step active" data-step="1">
+                        <h4>1. Assemble Hardware</h4>
+                        <p>Drag components onto the matching workbench targets.</p>
+                    </div>
+                    <div class="instruction-step" data-step="2">
+                        <h4>2. Deploy Code</h4>
+                        <p>System boots and models load into memory.</p>
+                    </div>
+                    <div class="instruction-step" data-step="3">
+                        <h4>3. Connect Phone</h4>
+                        <p>Caseworker connects over local WiFi.</p>
+                    </div>
+                    <div class="instruction-step" data-step="4">
+                        <h4>4. Process Intake</h4>
+                        <p>Inputs are captured, checked, and summarized.</p>
+                    </div>
+                </div>
+                <div class="build-feedback" id="buildFeedback"></div>
             </div>
         </div>
     </section>
@@ -3179,6 +3347,498 @@
         sliderBar.addEventListener('input', (e) => {
             currentSlide = parseInt(e.target.value);
             showSlide(currentSlide);
+        });
+
+        // Build simulator canvas interaction
+        class BuildSimulator {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                if (!this.canvas) return;
+
+                this.ctx = this.canvas.getContext('2d');
+                this.dpr = window.devicePixelRatio || 1;
+                this.components = [];
+                this.draggingComponent = null;
+                this.dragOffset = { x: 0, y: 0 };
+                this.step = 1;
+                this.assembled = [];
+                this.pi5Image = new Image();
+                this.pi5Image.onload = () => this.draw();
+                this.pi5Image.src = 'pi5.svg';
+
+                this.setupCanvas();
+                this.initializeComponents();
+                this.setupEventListeners();
+                this.draw();
+            }
+
+            setupCanvas() {
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvasWidth = rect.width;
+                this.canvasHeight = rect.height;
+                this.canvas.width = Math.round(rect.width * this.dpr);
+                this.canvas.height = Math.round(rect.height * this.dpr);
+                this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+            }
+
+            initializeComponents() {
+                this.components = [
+                    {
+                        id: 'pi5',
+                        name: 'Raspberry Pi 5',
+                        x: 36,
+                        y: 54,
+                        width: 190,
+                        height: 126,
+                        assembledWidth: 270,
+                        assembledHeight: 180,
+                        assembled: false,
+                        station: { x: 332, y: 128, w: 310, h: 210 },
+                        render: (ctx, comp) => this.drawPi5Svg(ctx, comp)
+                    },
+                    {
+                        id: 'ssd',
+                        name: 'External SSD',
+                        x: 62,
+                        y: 218,
+                        width: 112,
+                        height: 76,
+                        icon: 'SSD',
+                        color: '#004E89',
+                        assembled: false,
+                        station: { x: 686, y: 166, w: 138, h: 96 }
+                    },
+                    {
+                        id: 'power',
+                        name: 'Power Supply',
+                        x: 62,
+                        y: 330,
+                        width: 106,
+                        height: 70,
+                        icon: 'USB-C',
+                        color: '#F7931E',
+                        assembled: false,
+                        station: { x: 356, y: 330, w: 138, h: 92 }
+                    },
+                    {
+                        id: 'phone',
+                        name: 'Caseworker Phone',
+                        x: 66,
+                        y: 430,
+                        width: 82,
+                        height: 118,
+                        icon: 'APP',
+                        color: '#6A4C93',
+                        assembled: false,
+                        station: { x: 638, y: 314, w: 116, h: 148 }
+                    }
+                ];
+
+                this.fitLayoutToCanvas();
+            }
+
+            fitLayoutToCanvas() {
+                if (this.canvasWidth >= 760) return;
+
+                const scale = Math.max(0.6, this.canvasWidth / 760);
+                this.components.forEach((comp) => {
+                    comp.x *= scale;
+                    comp.y *= scale;
+                    comp.width *= scale;
+                    comp.height *= scale;
+                    comp.station = {
+                        x: comp.station.x * scale,
+                        y: comp.station.y * scale,
+                        w: comp.station.w * scale,
+                        h: comp.station.h * scale
+                    };
+                });
+            }
+
+            setupEventListeners() {
+                this.canvas.addEventListener('mousedown', (event) => this.onPointerDown(event));
+                this.canvas.addEventListener('mousemove', (event) => this.onPointerMove(event));
+                this.canvas.addEventListener('mouseup', () => this.onPointerUp());
+                this.canvas.addEventListener('mouseleave', () => this.onPointerUp());
+                this.canvas.addEventListener('touchstart', (event) => this.onTouchStart(event), { passive: false });
+                this.canvas.addEventListener('touchmove', (event) => this.onTouchMove(event), { passive: false });
+                this.canvas.addEventListener('touchend', () => this.onPointerUp());
+            }
+
+            getCanvasCoords(clientX, clientY) {
+                const rect = this.canvas.getBoundingClientRect();
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            onPointerDown(event) {
+                const coords = this.getCanvasCoords(event.clientX, event.clientY);
+                this.startDrag(coords.x, coords.y);
+            }
+
+            onTouchStart(event) {
+                const touch = event.touches[0];
+                const coords = this.getCanvasCoords(touch.clientX, touch.clientY);
+                this.startDrag(coords.x, coords.y);
+                event.preventDefault();
+            }
+
+            startDrag(x, y) {
+                for (let i = this.components.length - 1; i >= 0; i -= 1) {
+                    const comp = this.components[i];
+                    if (this.isPointInComponent(x, y, comp)) {
+                        this.draggingComponent = comp;
+                        this.dragOffset.x = x - comp.x;
+                        this.dragOffset.y = y - comp.y;
+                        this.canvas.style.cursor = 'grabbing';
+                        break;
+                    }
+                }
+            }
+
+            onPointerMove(event) {
+                const coords = this.getCanvasCoords(event.clientX, event.clientY);
+                this.updateDrag(coords.x, coords.y);
+            }
+
+            onTouchMove(event) {
+                const touch = event.touches[0];
+                const coords = this.getCanvasCoords(touch.clientX, touch.clientY);
+                this.updateDrag(coords.x, coords.y);
+                event.preventDefault();
+            }
+
+            updateDrag(x, y) {
+                if (!this.draggingComponent || this.step !== 1) return;
+
+                this.draggingComponent.x = x - this.dragOffset.x;
+                this.draggingComponent.y = y - this.dragOffset.y;
+                this.draw();
+            }
+
+            onPointerUp() {
+                if (!this.draggingComponent) return;
+
+                this.checkAssembly(this.draggingComponent);
+                this.draggingComponent = null;
+                this.canvas.style.cursor = 'grab';
+                this.draw();
+            }
+
+            isPointInComponent(x, y, comp) {
+                return x >= comp.x &&
+                    x <= comp.x + comp.width &&
+                    y >= comp.y &&
+                    y <= comp.y + comp.height;
+            }
+
+            checkAssembly(comp) {
+                const station = comp.station;
+                const centerX = comp.x + comp.width / 2;
+                const centerY = comp.y + comp.height / 2;
+                const tolerance = 48;
+
+                if (
+                    centerX > station.x - tolerance &&
+                    centerX < station.x + station.w + tolerance &&
+                    centerY > station.y - tolerance &&
+                    centerY < station.y + station.h + tolerance
+                ) {
+                    if (!comp.assembled && comp.assembledWidth && comp.assembledHeight) {
+                        comp.width = comp.assembledWidth;
+                        comp.height = comp.assembledHeight;
+                    }
+
+                    comp.x = station.x + (station.w - comp.width) / 2;
+                    comp.y = station.y + (station.h - comp.height) / 2;
+                    comp.assembled = true;
+
+                    if (!this.assembled.includes(comp.id)) {
+                        this.assembled.push(comp.id);
+                    }
+
+                    if (this.step === 1 && this.assembled.length === this.components.length) {
+                        window.setTimeout(() => this.advanceStep(), 450);
+                    }
+                }
+            }
+
+            advanceStep() {
+                if (this.step >= 4) return;
+
+                this.step += 1;
+                this.updateInstructions();
+                this.showFeedback();
+                this.draw();
+
+                if (this.step < 4) {
+                    window.setTimeout(() => this.advanceStep(), 1500);
+                }
+            }
+
+            updateInstructions() {
+                document.querySelectorAll('.instruction-step').forEach((step) => {
+                    step.classList.remove('active');
+                });
+
+                const activeStep = document.querySelector(`[data-step="${this.step}"]`);
+                if (activeStep) activeStep.classList.add('active');
+            }
+
+            showFeedback() {
+                const feedbackEl = document.getElementById('buildFeedback');
+                if (!feedbackEl) return;
+
+                const messages = {
+                    2: 'Hardware assembled. Models are loading into the local station.',
+                    3: 'Local connection ready. The phone can now reach the intake app.',
+                    4: 'Intake workflow ready. Audio, photos, and notes can be processed offline.'
+                };
+
+                feedbackEl.textContent = messages[this.step] || '';
+                feedbackEl.classList.add('show');
+
+                window.setTimeout(() => {
+                    feedbackEl.classList.remove('show');
+                }, 2800);
+            }
+
+            draw() {
+                const ctx = this.ctx;
+                const w = this.canvasWidth;
+                const h = this.canvasHeight;
+
+                ctx.clearRect(0, 0, w, h);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, w, h);
+                this.drawGrid();
+                this.drawWorkbench();
+                this.drawConnections();
+                this.components.forEach((comp) => this.drawComponent(comp));
+                this.drawStatus();
+            }
+
+            drawGrid() {
+                const ctx = this.ctx;
+                ctx.save();
+                ctx.strokeStyle = '#E8E8E8';
+                ctx.lineWidth = 0.5;
+
+                for (let x = 0; x <= this.canvasWidth; x += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, this.canvasHeight);
+                    ctx.stroke();
+                }
+
+                for (let y = 0; y <= this.canvasHeight; y += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(this.canvasWidth, y);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
+            drawWorkbench() {
+                const ctx = this.ctx;
+                this.components.forEach((comp) => {
+                    const station = comp.station;
+                    ctx.save();
+                    ctx.fillStyle = comp.assembled ? 'rgba(76, 175, 80, 0.08)' : 'rgba(0, 0, 0, 0.025)';
+                    ctx.strokeStyle = comp.assembled ? 'rgba(46, 125, 50, 0.55)' : 'rgba(0, 0, 0, 0.14)';
+                    ctx.lineWidth = comp.assembled ? 2 : 1.5;
+                    ctx.setLineDash(comp.assembled ? [] : [8, 8]);
+                    this.roundRect(station.x, station.y, station.w, station.h, 10);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    if (comp.assembled) {
+                        ctx.font = '700 11px Arial';
+                        const labelWidth = Math.min(station.w - 24, ctx.measureText(comp.name).width + 24);
+                        ctx.fillStyle = 'rgba(46, 125, 50, 0.9)';
+                        this.roundRect(station.x + 12, station.y + 12, labelWidth, 24, 12);
+                        ctx.fill();
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(comp.name, station.x + 12 + labelWidth / 2, station.y + 24);
+                    } else {
+                        ctx.fillStyle = '#767676';
+                        ctx.font = '12px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'top';
+                        ctx.fillText(comp.name, station.x + station.w / 2, station.y + station.h + 10);
+                    }
+                    ctx.restore();
+                });
+            }
+
+            drawComponent(comp) {
+                if (comp.render) {
+                    comp.render(this.ctx, comp);
+                } else {
+                    this.drawDefaultComponent(this.ctx, comp);
+                }
+
+                if (comp.assembled) this.drawCheckmark(comp);
+            }
+
+            drawPi5Svg(ctx, comp) {
+                const drawX = Math.round(comp.x);
+                const drawY = Math.round(comp.y);
+                const drawWidth = Math.round(comp.width);
+                const drawHeight = Math.round(comp.height);
+
+                ctx.save();
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.shadowColor = comp.assembled ? 'transparent' : 'rgba(0, 0, 0, 0.10)';
+                ctx.shadowBlur = comp.assembled ? 0 : 3;
+                ctx.shadowOffsetY = comp.assembled ? 0 : 2;
+
+                if (this.pi5Image.complete && this.pi5Image.naturalWidth > 0) {
+                    ctx.drawImage(this.pi5Image, drawX, drawY, drawWidth, drawHeight);
+                } else {
+                    ctx.fillStyle = '#07995d';
+                    this.roundRect(drawX, drawY, drawWidth, drawHeight, 10);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+                this.drawComponentLabel(comp);
+            }
+
+            drawDefaultComponent(ctx, comp) {
+                ctx.save();
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.12)';
+                ctx.shadowBlur = 8;
+                ctx.shadowOffsetY = 4;
+                ctx.fillStyle = comp.color;
+                this.roundRect(comp.x, comp.y, comp.width, comp.height, 10);
+                ctx.fill();
+                ctx.shadowColor = 'transparent';
+                ctx.strokeStyle = comp.assembled ? '#000000' : '#CCCCCC';
+                ctx.lineWidth = comp.assembled ? 2.5 : 1.5;
+                this.roundRect(comp.x, comp.y, comp.width, comp.height, 10);
+                ctx.stroke();
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = '700 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(comp.icon, comp.x + comp.width / 2, comp.y + comp.height / 2);
+                ctx.restore();
+                this.drawComponentLabel(comp);
+            }
+
+            drawComponentLabel(comp) {
+                if (comp.assembled) return;
+
+                const ctx = this.ctx;
+                ctx.save();
+                ctx.fillStyle = '#333333';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                ctx.fillText(comp.name, comp.x + comp.width / 2, comp.y + comp.height + 8);
+                ctx.restore();
+            }
+
+            drawCheckmark(comp) {
+                const ctx = this.ctx;
+                const size = 22;
+                ctx.save();
+                ctx.fillStyle = '#2e7d32';
+                ctx.beginPath();
+                ctx.arc(comp.x + comp.width - 8, comp.y + 8, size / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = '700 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('✓', comp.x + comp.width - 8, comp.y + 8);
+                ctx.restore();
+            }
+
+            drawConnections() {
+                const pi5 = this.components.find((comp) => comp.id === 'pi5');
+                if (!pi5 || !pi5.assembled) return;
+
+                const ctx = this.ctx;
+                ctx.save();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#666666';
+                ctx.setLineDash([6, 6]);
+
+                this.components
+                    .filter((comp) => comp.id !== 'pi5' && comp.assembled)
+                    .forEach((comp) => {
+                        ctx.beginPath();
+                        ctx.moveTo(pi5.x + pi5.width / 2, pi5.y + pi5.height / 2);
+                        ctx.lineTo(comp.x + comp.width / 2, comp.y + comp.height / 2);
+                        ctx.stroke();
+                    });
+
+                ctx.restore();
+            }
+
+            drawStatus() {
+                const ctx = this.ctx;
+                const progress = (this.step - 1) / 3;
+                const barWidth = Math.min(180, this.canvasWidth * 0.3);
+                const barX = this.canvasWidth - barWidth - 22;
+                const barY = this.canvasHeight - 34;
+
+                ctx.save();
+                ctx.fillStyle = '#333333';
+                ctx.font = '13px Arial';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'alphabetic';
+                ctx.fillText(`Step ${this.step}: ${['Assemble', 'Deploy', 'Connect', 'Process'][this.step - 1]}`, 20, this.canvasHeight - 44);
+                ctx.fillText(`Components: ${this.assembled.length}/${this.components.length}`, 20, this.canvasHeight - 22);
+
+                ctx.fillStyle = '#E0E0E0';
+                ctx.fillRect(barX, barY, barWidth, 8);
+                ctx.fillStyle = '#2e7d32';
+                ctx.fillRect(barX, barY, barWidth * progress, 8);
+                ctx.strokeStyle = '#999999';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(barX, barY, barWidth, 8);
+                ctx.restore();
+            }
+
+            roundRect(x, y, width, height, radius) {
+                const ctx = this.ctx;
+                const r = Math.min(radius, width / 2, height / 2);
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + width - r, y);
+                ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+                ctx.lineTo(x + width, y + height - r);
+                ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+                ctx.lineTo(x + r, y + height);
+                ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            resize() {
+                this.setupCanvas();
+                this.initializeComponents();
+                this.draw();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.buildSimulator = new BuildSimulator('buildCanvas');
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.buildSimulator) window.buildSimulator.resize();
         });
 
     </script>
