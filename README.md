@@ -1,10 +1,10 @@
-# Globis Edge 2.0 — Landing Page
+# Globis Edge — Landing Page
 
 A professional, minimalist landing page for **Globis Edge 2.0**, the Gemma 4 Good Hackathon-winning humanitarian intake system.
 
 ## About Globis Edge
 
-Globis Edge 2.0 is an offline, on-device caseworker companion for refugee reception centres. It securely processes identity documents, audio testimony, and caseworker notes into structured, audit-safe intake records—with zero cloud dependency.
+Globis Edge is an offline, on-device caseworker companion for refugee reception centres. It securely processes identity documents, audio testimony, and caseworker notes into structured, audit-safe intake records—with zero cloud dependency.
 
 **Key Features:**
 - ✅ Tiered inference (2B Scout + 4B Analyst)
@@ -15,8 +15,8 @@ Globis Edge 2.0 is an offline, on-device caseworker companion for refugee recept
 
 ## Links
 
-- 📹 [Full Demo Video (3 min)](https://www.youtube.com/watch?v=VtwEi7SoPxA)
-- ⚡ [Live Demo (30 sec)](https://youtube.com/shorts/pHhzpePO5_0?si=8FmIjY2sXJCkKtve)
+- 📹 [Full Demo Video (3-min)](https://www.youtube.com/watch?v=VtwEi7SoPxA)
+- ⚡ [Live Demo (1-min)](https://youtube.com/shorts/pHhzpePO5_0?si=8FmIjY2sXJCkKtve)
 - 💻 [GitHub Repository](https://github.com/Kukomoo/globis-edge)
 - 📊 [Kaggle Notebook](https://www.kaggle.com/code/nadakhas/globis-edge)
 - 📄 [Kaggle Writeup](https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/new-writeup-1778786419461)
